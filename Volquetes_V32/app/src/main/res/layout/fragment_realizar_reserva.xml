@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/huella_small"
+    android:clickable="false"
+    tools:context=".swipview.Cliente.Reserva.RealizarReservaFragment">
+
+    <EditText
+        android:id="@+id/codigo_cliente_reserva"
+        android:layout_width="150dp"
+        android:layout_height="45dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="11dp"
+        android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz123456789"
+        android:ems="10"
+        android:hint="@string/codigo_CLIENTE"
+        android:inputType="textPersonName" />
+
+    <Button
+        android:id="@+id/btn_buscar_id_cliente_reserva"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="185dp"
+        android:layout_marginTop="11dp"
+        android:onClick="BuscarClienteReserva"
+        android:text="@string/BUSCAR" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:src="@drawable/cinta_small" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="0dp"
+        android:src="@drawable/cinta_small" />
+
+    <EditText
+        android:id="@+id/nombre_cliente_reserva"
+        android:layout_width="300dp"
+        android:layout_height="45dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="80dp"
+        android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijkl mnopqrstuvwxyz"
+        android:ems="10"
+        android:hint="@string/NOMBRE_CLIENTE"
+        android:inputType="textPersonName"
+        android:textSize="16sp" />
+
+    <EditText
+        android:id="@+id/precio_reserva"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="130dp"
+        android:digits="1234567890"
+        android:ems="10"
+        android:hint="@string/PRECIO"
+        android:inputType="textPersonName"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="180dp"
+        android:layout_height="36dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="180dp"
+        android:text="@string/forma_pago"
+        android:textColor="@android:color/darker_gray"
+        android:visibility="visible"
+        tools:visibility="visible" />
+
+
+
+    <Spinner
+        android:id="@+id/formaPago"
+        android:layout_width="180dp"
+        android:layout_height="30dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="200dp"
+        android:textColor="@android:color/background_dark"
+        android:visibility="visible"
+        tools:visibility="visible" />
+
+
+
+    <EditText
+        android:id="@+id/fecha_reserva"
+        android:layout_width="180dp"
+        android:layout_height="45dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="250dp"
+        android:clickable="false"
+        android:focusable="false"
+        android:enabled="false"
+        android:ems="10"
+        android:hint="@string/fecha_entrega"
+        android:inputType="time"
+        android:textColor="@android:color/darker_gray"
+        android:textSize="16sp"
+        android:visibility="visible"
+        tools:visibility="visible" />
+
+    <Button
+        android:id="@+id/btn_agregar_reserva"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="110dp"
+        android:layout_marginTop="300dp"
+        android:onClick="GuardarReserva"
+
+        android:text="@string/AGREGAR" />
+
+    <Button
+        android:id="@+id/btn_fecha"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="200dp"
+        android:layout_marginTop="240dp"
+        android:onClick="FechaActivar"
+        android:text="@string/fecha_selecionar" />
+
+
+</FrameLayout>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".swipview.Cliente.Volquete.ListarVolqueteFragment">
+
+
+    <ImageView
+        android:id="@+id/imageView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="0dp"
+        android:src="@drawable/cinta_small" />
+
+    <EditText
+        android:id="@+id/codigo_volquete_listar"
+        android:layout_width="180dp"
+        android:layout_height="45dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefgh ijklmnopqrstuvwxyz1234567890"
+        android:ems="10"
+        android:hint="@string/codigo_volquete"
+        android:inputType="textPersonName"
+        android:textSize="16sp" />
+
+    <ImageView
+        android:id="@+id/imageView9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:src="@drawable/cinta_small" />
+
+    <Button
+        android:id="@+id/btn_buscar_volquete_listar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="185dp"
+        android:layout_marginTop="11dp"
+        android:onClick="BuscarListarVolquete"
+        android:text="@string/BUSCAR" />
+
+    <ListView
+        android:id="@+id/ListaVolquetes"
+        android:layout_width="398dp"
+        android:layout_height="match_parent"
+        android:paddingTop="80dp" />
+
+
+</FrameLayout>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="frgp.utn.edu.com.volquetes">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".swipview.Cliente.Reportes.reporte3"
+            android:label="@string/title_activity_reporte3"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".swipview.Cliente.Reportes.reporte2"
+            android:label="@string/title_activity_reporte2"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".swipview.Cliente.Reportes.reporte1"
+            android:label="@string/title_activity_reporte1"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".swipview.Cliente.Reportes.reportes_principal"
+            android:label="@string/title_activity_reportes_principal"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <!--
+             The API key for Google Maps-based APIs is defined as a string resource.
+             (See the file "res/values/google_maps_api.xml").
+             Note that the API key is linked to the encryption key used to sign the APK.
+             You need a different API key for each encryption key, including the release key that is used to
+             sign the APK for publishing.
+             You can define the keys for the debug and release targets in src/debug/ and src/release/.
+        -->
+        <activity
+            android:name=".mapa"
+            android:label="@string/title_activity_mapa" />
+        <activity
+            android:name=".swipview.Cliente.Cliente.TabbedActivity"
+            android:label="@string/title_activity_tabbedCliente"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".swipview.Cliente.Volquete.TabbedActivityVolquete"
+            android:label="@string/title_activity_tabbedVolquete"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".swipview.Cliente.Reserva.TabbedActivityReserva"
+            android:label="@string/title_activity_tabbedReservas"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".principal"
+            android:label="@string/title_activity_principal"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".registrarse" />
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
+    </application>
+
+</manifest>
