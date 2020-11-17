@@ -45,6 +45,7 @@
         android:id="@+id/ListaClientes"
         android:layout_width="398dp"
         android:layout_height="match_parent"
-        android:paddingTop="80dp" />
+        android:paddingTop="80dp"
+        android:paddingBottom="50dp" />
 
 </FrameLayout>

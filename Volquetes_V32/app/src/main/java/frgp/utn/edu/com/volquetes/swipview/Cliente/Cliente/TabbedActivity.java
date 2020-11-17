@@ -85,18 +85,25 @@ public class TabbedActivity extends AppCompatActivity {
                     msj_toast_alta = msj_toast_alta + "Campo CODIGO vacío \n";
                 }
                 if  (cel_alta.getText().toString().isEmpty() && tel_lab_alta.getText().toString().isEmpty() && tel_par_alta.getText().toString().isEmpty()){
-                    msj_toast_alta = msj_toast_alta  + "Tiene que ingresar al menos un n° telefónico";
+                    msj_toast_alta = msj_toast_alta  + "Tiene que ingresar al menos un n° telefónico \n";
                 }
 
                 if ( ValidarEmail(email_alta.getText().toString())== false ) {
                     msj_toast_alta = msj_toast_alta + "El Mail es invalido \n";
                 }
+
                 if ( ValidarTelefono(tel_lab_alta.getText().toString())== false ) {
                     msj_toast_alta = msj_toast_alta + "El Telefono laboral  es invalido \n";
+                }else if(tel_lab_alta.length()< 8 || tel_lab_alta.length() > 15 ) {
+                    msj_toast_alta = msj_toast_alta + "Tu telefono LABORAL debe contar con un mínimo y máximo de 8 y 15 caracteres respectivamente \n";
                 }
+
                 if ( ValidarTelefono(tel_par_alta.getText().toString())== false ) {
                     msj_toast_alta = msj_toast_alta + "El Telefono particular es invalido \n";
+                }else if(tel_par_alta.length()< 8 || tel_par_alta.length() > 15 ) {
+                    msj_toast_alta = msj_toast_alta + "Tu telefono PARTICULAR debe contar con un mínimo y máximo de 8 y 15 caracteres respectivamente \n";
                 }
+
                 if ( ValidarCuit(cuit_alta.getText().toString())== false ) {
                     msj_toast_alta = msj_toast_alta + "El Cuit es invalido \n";
                 }
