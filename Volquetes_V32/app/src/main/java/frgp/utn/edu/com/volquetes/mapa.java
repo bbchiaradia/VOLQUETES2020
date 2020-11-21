@@ -1,5 +1,6 @@
 package frgp.utn.edu.com.volquetes;
 
+import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.fragment.app.FragmentActivity;
@@ -10,14 +11,20 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.Polygon;
+import com.google.android.gms.maps.model.PolygonOptions;
 
 import java.util.ArrayList;
 
 import frgp.utn.edu.com.volquetes.conexion.DataMainActivitBuscarUbicacionReservas;
 
+import static android.graphics.Color.BLUE;
+
 public class mapa extends FragmentActivity implements OnMapReadyCallback  {
 
     private GoogleMap mMap;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,12 +56,67 @@ public class mapa extends FragmentActivity implements OnMapReadyCallback  {
         ArrayList<String> ArrayY = new ArrayList<String>();
         Integer tamanio=0;
 
+
+/*
+
+        PolygonOptions polygonOptions = new PolygonOptions()
+                .add(new LatLng(34.47, -58.68),
+                        new LatLng(37.45, -122.0),
+                        new LatLng(37.45, -122.2),
+                        new LatLng(37.35, -122.2),
+                        new LatLng(37.35, -122.0))
+                .strokeColor(Color.RED)
+                .fillColor(Color.BLUE));
+
+// Get back the mutable Polygon
+        Polygon polygon = mMap.addPolygon(polygonOptions);
+
+        */
+
+        /////////////  DIUJO ZONAS - POLIGIONOS /////////////////
+        Polygon polygon1 = mMap.addPolygon(new PolygonOptions()
+                .add(new LatLng(-34.470327, -58.683718),
+                        new LatLng(-34.478402, -58.673591),
+                        new LatLng( -34.488080, -58.694278),
+                        new LatLng(-34.475546, -58.704168))
+                .strokeColor(Color.RED));
+        polygon1.setTag("ZONA 1");
+        polygon1.setStrokeWidth(4f);
+
+
+
+        Polygon polygon2 = mMap.addPolygon(new PolygonOptions()
+                .add(new LatLng(-34.470327, -58.683718),
+                        new LatLng(-34.447765, -58.700565),
+                        new LatLng( -34.468960, -58.756097),
+                        new LatLng( -34.474217, -58.736015))
+                .strokeColor(BLUE));
+        polygon2.setTag("ZONA 2");
+        polygon2.setStrokeWidth(4f);
+
+
+        Polygon polygon3 = mMap.addPolygon(new PolygonOptions()
+                .add(new LatLng(-34.470327, -58.683718),
+                        new LatLng(-34.468210, -58.623871),
+                        new LatLng(  -34.446975,  -58.674276),
+                        new LatLng( -34.466990, -58.683652))
+                .strokeColor(Color.GREEN));
+        polygon3.setTag("ZONA 3");
+        polygon3.setStrokeWidth(4f);
+
+
+        ///////////// FIN  DIUJO ZONAS - POLIGIONOS /////////////////
+
+
         new DataMainActivitBuscarUbicacionReservas(mapa.this, ArrayX, ArrayY, ArrayDescripcionMarker,tamanio).execute();
 
         /////////////  SI DESCOMENTO ESTO QUE ES CUANDO LEVANTA DE LA BASE NO FUNCIONA /////////////////
         //ArrayList<String> lista = (ArrayList<String>) getIntent().getStringArrayListExtra("miLista");
         // ArrayList<String> lista2 = (ArrayList<String>) getIntent().getStringArrayListExtra("miLista2");
         ///////////////////////////////////////////////////////////////////////////////////////////////77
+
+
+
 
 
         ////////////////  PONIENDOLE EXPLICITAMENTE LOS DATOS SI /////////////////////////

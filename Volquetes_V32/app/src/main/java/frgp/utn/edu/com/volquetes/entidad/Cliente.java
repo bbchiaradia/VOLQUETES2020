@@ -14,8 +14,7 @@ public class Cliente {
 
     public Cliente(){
     }
-    public Cliente( String nombre , String direccion, String email , String cuit , String celular , String tel_part,String tel_lab, String codigoCli){
-
+    public Cliente(String nombre , String direccion, String email , String cuit , String celular , String tel_part,String tel_lab, String codigoCli){
         this.nombreCliente=nombre;
         this.direccionCliente=direccion;
         this.emailCliente=email;

@@ -1,5 +1,6 @@
 package frgp.utn.edu.com.volquetes.conexion;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -10,6 +11,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
+import frgp.utn.edu.com.volquetes.R;
 import frgp.utn.edu.com.volquetes.entidad.Cliente;
 import frgp.utn.edu.com.volquetes.principal;
 
@@ -17,8 +19,10 @@ public class DataMainActivityModificarCliente extends AsyncTask<String, Void, St
     private Context context;
     Cliente cliente = new Cliente();
     int band = 0;
+    private ProgressDialog dialog;
     public DataMainActivityModificarCliente(Context context) {
         this.context = context;
+        dialog = new ProgressDialog(context);
     }
 
     //@Override
@@ -63,8 +67,18 @@ public class DataMainActivityModificarCliente extends AsyncTask<String, Void, St
         return response;
     }
 
+
+    protected void onPreExecute() {
+        dialog.show();
+        dialog.setContentView(R.layout.progress_dialog);
+        dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+    }
+
     //@Override
     protected void onPostExecute(String response) {
+        if (dialog.isShowing()) {
+            dialog.dismiss();
+        }
         //Valido si el usuario no existio y se registro correctamente
         if(band == 1 && response == "Carga exitosa") {
             Toast.makeText(context, "El cliente  " + cliente.toString() +"  se ha modificado correctamente", Toast.LENGTH_SHORT).show();

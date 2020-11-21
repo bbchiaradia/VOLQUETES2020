@@ -1,5 +1,6 @@
 package frgp.utn.edu.com.volquetes.conexion;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.widget.EditText;
@@ -10,16 +11,19 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
+import frgp.utn.edu.com.volquetes.R;
+
 public class DataMainActivityReporteConsultarStock extends AsyncTask<String, Void, String> {
     private Context context;
     int band = 0;
     final EditText txt_disponible;
     final EditText txt_reservados;
-
+    private ProgressDialog dialog;
     public DataMainActivityReporteConsultarStock(Context context, EditText stk_disponibles, EditText stk_reservados) {
         this.context = context;
         this.txt_disponible = stk_disponibles;
         this.txt_reservados = stk_reservados;
+        dialog = new ProgressDialog(context);
 
     }
     int cantReg = 0;
@@ -71,8 +75,18 @@ public class DataMainActivityReporteConsultarStock extends AsyncTask<String, Voi
         return response;
     }
 
+
+    protected void onPreExecute() {
+        dialog.show();
+        dialog.setContentView(R.layout.progress_dialog);
+        dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+    }
+
     //@Override
     protected void onPostExecute(String response) {
+        if (dialog.isShowing()) {
+            dialog.dismiss();
+        }
         //Valido si el usuario no existio y se registro correctamente
         if(band == 1 && response == "Carga exitosa") {
            txt_disponible.setText(Disponibles_s.toString());

@@ -6,6 +6,9 @@ import android.os.AsyncTask;
 import android.widget.Toast;
 
 import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Polygon;
+import com.google.android.gms.maps.model.PolygonOptions;
 
 import java.io.Serializable;
 import java.sql.Connection;
@@ -111,8 +114,6 @@ public class DataMainActivitBuscarUbicacionReservas extends AsyncTask<String, Vo
             intent.putExtra("miLista", Arrayx);
             intent.putExtra("miLista2", Arrayy);
             this.context.startActivity(intent);
-
-
 
 
 

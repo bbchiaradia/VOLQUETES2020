@@ -1,5 +1,6 @@
 package frgp.utn.edu.com.volquetes.conexion;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.widget.EditText;
@@ -10,6 +11,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
+import frgp.utn.edu.com.volquetes.R;
 import frgp.utn.edu.com.volquetes.entidad.Cliente;
 
 public class DataMainActivityBuscarCliente extends AsyncTask<String, Void, String> {
@@ -21,7 +23,7 @@ public class DataMainActivityBuscarCliente extends AsyncTask<String, Void, Strin
     final EditText cel_cliente_modif ;
     final EditText tel_par_cliente_modif;
     final EditText tel_lab_cliente_modif;
-
+    private ProgressDialog dialog;
 
     Cliente cliente = new Cliente();
     int band = 0;
@@ -34,6 +36,7 @@ public class DataMainActivityBuscarCliente extends AsyncTask<String, Void, Strin
         this.tel_par_cliente_modif = tel_par_modif;
         this.tel_lab_cliente_modif = tel_lab_modif;
         this.context = context;
+        dialog = new ProgressDialog(context);
 
     }
 
@@ -89,8 +92,18 @@ public class DataMainActivityBuscarCliente extends AsyncTask<String, Void, Strin
         return response;
     }
 
+
+    protected void onPreExecute() {
+        dialog.show();
+        dialog.setContentView(R.layout.progress_dialog);
+        dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+    }
+
     //@Override
     protected void onPostExecute(String response) {
+        if (dialog.isShowing()) {
+            dialog.dismiss();
+        }
         //Valido si el usuario no existio y se registro correctamente
         if(band == 1 && response == "Carga exitosa") {
             Toast.makeText(context, "Los datos del cliente se han cargado correctamente", Toast.LENGTH_SHORT).show();

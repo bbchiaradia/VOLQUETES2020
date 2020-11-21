@@ -1,5 +1,6 @@
 package frgp.utn.edu.com.volquetes.conexion;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.view.LayoutInflater;
@@ -27,6 +28,8 @@ public class DataMainActivityReporte2ClienteReservas extends AsyncTask<String, V
     final ArrayList list_id_reserva = null ;
     final EditText Cantidad_reservas;
 
+    private ProgressDialog dialog;
+
     Button btn_Baja;
 
     //LayoutInflater imagen_retiro =  LayoutInflater.from(context);
@@ -36,6 +39,7 @@ public class DataMainActivityReporte2ClienteReservas extends AsyncTask<String, V
         this.context = context;
         this.list_reserva = listaCliente;
         this.Cantidad_reservas = cant_reservas;
+        dialog = new ProgressDialog(context);
     }
     int cantReg = 0;
     ArrayList<String> Coleccionn = new ArrayList<String>();
@@ -98,8 +102,19 @@ public class DataMainActivityReporte2ClienteReservas extends AsyncTask<String, V
         return response;
     }
 
+
+    protected void onPreExecute() {
+        dialog.show();
+        dialog.setContentView(R.layout.progress_dialog);
+        dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+    }
+
+
     //@Override
     protected void onPostExecute(String response) {
+         if (dialog.isShowing()) {
+            dialog.dismiss();
+        }
         LayoutInflater imagen_retiro =  LayoutInflater.from(context);
         final View vista = imagen_retiro.inflate(R.layout.imagen_finalizar_reserva, null);
 

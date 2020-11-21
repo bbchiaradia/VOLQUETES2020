@@ -1,5 +1,6 @@
 package frgp.utn.edu.com.volquetes.conexion;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.widget.Toast;
@@ -8,12 +9,16 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.Statement;
 
+import frgp.utn.edu.com.volquetes.R;
+
 public class DataMainActivityFinalizarReserva extends AsyncTask<String, Void, String> {
     private Context context;
     int band = 0;
     int band2 = 0;
+    private ProgressDialog dialog;
     public DataMainActivityFinalizarReserva(Context context) {
         this.context = context;
+        dialog = new ProgressDialog(context);
     }
 
     //@Override
@@ -45,8 +50,19 @@ public class DataMainActivityFinalizarReserva extends AsyncTask<String, Void, St
 
     }
 
+    protected void onPreExecute() {
+        dialog.show();
+        dialog.setContentView(R.layout.progress_dialog);
+        dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+    }
+
+
+
     //@Override
     protected void onPostExecute(String response) {
+        if (dialog.isShowing()) {
+            dialog.dismiss();
+        }
         if(response == "Carga exitosa") {
             Toast.makeText(context, "La reserva se ha finalizado correctamente", Toast.LENGTH_SHORT).show();
           //  Intent intent_name = new Intent();

@@ -1,5 +1,6 @@
 package frgp.utn.edu.com.volquetes.conexion;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.widget.ArrayAdapter;
@@ -12,6 +13,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import frgp.utn.edu.com.volquetes.R;
 import frgp.utn.edu.com.volquetes.entidad.Cliente;
 
 public class DataMainActivityListarCliente extends AsyncTask<String, Void, String> {
@@ -19,10 +21,11 @@ public class DataMainActivityListarCliente extends AsyncTask<String, Void, Strin
     Cliente cliente = new Cliente();
     int band = 0;
     final ListView list_cliente;
-
+    private ProgressDialog dialog;
     public DataMainActivityListarCliente(Context context, ListView listaCliente) {
         this.context = context;
         this.list_cliente = listaCliente;
+        dialog = new ProgressDialog(context);
 
     }
     int cantReg = 0;
@@ -52,7 +55,7 @@ public class DataMainActivityListarCliente extends AsyncTask<String, Void, Strin
                     Coleccionn.add(rs1.getString("nombreCliente")+" - "+ rs1.getString("codCliente") +"\nDireccion: "+ rs1.getString("direccion") +"\nCUIT: "+ rs1.getString("cuit") + "\n E-mail: "+ rs1.getString("email")+ "\nTelefono Celular: "+ rs1.getString("celular") + "\nTelefono Particular: "+ rs1.getString("telefonoParticular")  + "\nTelefono Laboral: "+ rs1.getString("telefonoLaboral") );
                 }
             }else{
-                ResultSet rs1 = st1.executeQuery("SELECT * FROM `clientes` where codCliente like '%"+codigo_cliente+"%' or nombreCliente like '%"+codigo_cliente+"%' or email like '%"+codigo_cliente+"%'");
+                ResultSet rs1 = st1.executeQuery("SELECT * FROM `clientes` where codCliente like '%"+codigo_cliente+"%' or nombreCliente like '%"+codigo_cliente+"%' or email like '%"+codigo_cliente+"%'  or cuit like '%"+codigo_cliente+"%'  or direccion like '%"+codigo_cliente+"%' or celular like '%"+codigo_cliente+"%' or telefonoParticular like '%"+codigo_cliente+"%' or telefonoLaboral like '%"+codigo_cliente+"%'");
                 while(rs1.next()) {
                     band=1;
                     cliente.setCodigoCliente(rs1.getString("codCliente"));
@@ -75,8 +78,18 @@ public class DataMainActivityListarCliente extends AsyncTask<String, Void, Strin
         return response;
     }
 
+    protected void onPreExecute() {
+        dialog.show();
+        dialog.setContentView(R.layout.progress_dialog);
+        dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+    }
+
+
     //@Override
     protected void onPostExecute(String response) {
+        if (dialog.isShowing()) {
+            dialog.dismiss();
+        }
         //Valido si el usuario no existio y se registro correctamente
         if(band == 1 && response == "Carga exitosa") {
             adaptador = new ArrayAdapter<String>(context, android.R.layout.simple_list_item_1, Coleccionn);

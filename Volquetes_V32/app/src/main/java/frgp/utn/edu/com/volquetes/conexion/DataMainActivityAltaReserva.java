@@ -1,5 +1,6 @@
 package frgp.utn.edu.com.volquetes.conexion;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.widget.Toast;
@@ -9,14 +10,17 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
+import frgp.utn.edu.com.volquetes.R;
 import frgp.utn.edu.com.volquetes.entidad.Reserva;
 
 public class DataMainActivityAltaReserva extends AsyncTask<String, Void, String>  {
     int band = 0;
     Reserva reserva = new Reserva();
     private Context context;
+    private ProgressDialog dialog;
     public DataMainActivityAltaReserva (Context context){
         this.context = context;
+        dialog = new ProgressDialog(context);
     }
 
 
@@ -68,8 +72,18 @@ public class DataMainActivityAltaReserva extends AsyncTask<String, Void, String>
 
         return response;
     }
+
+    protected void onPreExecute() {
+        dialog.show();
+        dialog.setContentView(R.layout.progress_dialog);
+        dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+    }
+
     //@Override
     protected void onPostExecute(String response) {
+        if (dialog.isShowing()) {
+            dialog.dismiss();
+        }
      if(band ==0){
          Toast.makeText(this.context, "No hay volquetes disponibles", Toast.LENGTH_SHORT).show();
      }else{
