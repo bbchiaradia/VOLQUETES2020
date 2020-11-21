@@ -11,7 +11,9 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
+import android.app.ProgressDialog;
 
+import frgp.utn.edu.com.volquetes.R;
 import frgp.utn.edu.com.volquetes.entidad.Volquete;
 
 public class DataMainActivityListarVolquete extends AsyncTask<String, Void, String> {
@@ -19,10 +21,12 @@ public class DataMainActivityListarVolquete extends AsyncTask<String, Void, Stri
     Volquete volquete = new Volquete();
     int band = 0;
     final ListView list_volquete;
+    private ProgressDialog dialog;
 
     public DataMainActivityListarVolquete(Context context, ListView listaVolquete) {
         this.context = context;
         this.list_volquete = listaVolquete;
+        dialog = new ProgressDialog(context);
 
     }
     int cantReg = 0;
@@ -85,9 +89,17 @@ public class DataMainActivityListarVolquete extends AsyncTask<String, Void, Stri
 
         return response;
     }
+    protected void onPreExecute() {
+        dialog.show();
+        dialog.setContentView(R.layout.progress_dialog);
+        dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+    }
 
     //@Override
     protected void onPostExecute(String response) {
+        if (dialog.isShowing()) {
+            dialog.dismiss();
+        }
         //Valido si el usuario no existio y se registro correctamente
         if(band == 1 && response == "Carga exitosa") {
             adaptador = new ArrayAdapter<String>(context, android.R.layout.simple_list_item_1, Coleccionn);

@@ -9,7 +9,9 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import android.app.ProgressDialog;
 
+import frgp.utn.edu.com.volquetes.R;
 import frgp.utn.edu.com.volquetes.entidad.Volquete;
 import frgp.utn.edu.com.volquetes.principal;
 
@@ -17,8 +19,10 @@ public class DataMainActivityAltaVolquete extends AsyncTask<String, Void, String
     private Context context;
     Volquete volquete = new Volquete();
     int band = 0;
+    private ProgressDialog dialog;
     public DataMainActivityAltaVolquete(Context context) {
         this.context = context;
+        dialog = new ProgressDialog(context);
     }
 
     //@Override
@@ -55,9 +59,17 @@ public class DataMainActivityAltaVolquete extends AsyncTask<String, Void, String
 
         return response;
     }
+    protected void onPreExecute() {
+        dialog.show();
+        dialog.setContentView(R.layout.progress_dialog);
+        dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+    }
 
     //@Override
     protected void onPostExecute(String response) {
+        if (dialog.isShowing()) {
+            dialog.dismiss();
+        }
         //Valido si el usuario no existio y se registro correctamente
         if(band == 0 && response == "Carga exitosa") {
             Toast.makeText(context, "El volquete se ha registrado correctamente", Toast.LENGTH_SHORT).show();
