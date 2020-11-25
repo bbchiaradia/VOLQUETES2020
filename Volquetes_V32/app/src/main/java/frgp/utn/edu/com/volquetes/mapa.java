@@ -73,39 +73,6 @@ public class mapa extends FragmentActivity implements OnMapReadyCallback  {
 
         */
 
-        /////////////  DIUJO ZONAS - POLIGIONOS /////////////////
-        Polygon polygon1 = mMap.addPolygon(new PolygonOptions()
-                .add(new LatLng(-34.470327, -58.683718),
-                        new LatLng(-34.478402, -58.673591),
-                        new LatLng( -34.488080, -58.694278),
-                        new LatLng(-34.475546, -58.704168))
-                .strokeColor(Color.RED));
-        polygon1.setTag("ZONA 1");
-        polygon1.setStrokeWidth(4f);
-
-
-
-        Polygon polygon2 = mMap.addPolygon(new PolygonOptions()
-                .add(new LatLng(-34.470327, -58.683718),
-                        new LatLng(-34.447765, -58.700565),
-                        new LatLng( -34.468960, -58.756097),
-                        new LatLng( -34.474217, -58.736015))
-                .strokeColor(BLUE));
-        polygon2.setTag("ZONA 2");
-        polygon2.setStrokeWidth(4f);
-
-
-        Polygon polygon3 = mMap.addPolygon(new PolygonOptions()
-                .add(new LatLng(-34.470327, -58.683718),
-                        new LatLng(-34.468210, -58.623871),
-                        new LatLng(  -34.446975,  -58.674276),
-                        new LatLng( -34.466990, -58.683652))
-                .strokeColor(Color.GREEN));
-        polygon3.setTag("ZONA 3");
-        polygon3.setStrokeWidth(4f);
-
-
-        ///////////// FIN  DIUJO ZONAS - POLIGIONOS /////////////////
 
 
         new DataMainActivitBuscarUbicacionReservas(mapa.this, ArrayX, ArrayY, ArrayDescripcionMarker,tamanio).execute();
@@ -163,6 +130,44 @@ public class mapa extends FragmentActivity implements OnMapReadyCallback  {
             mMap.addMarker(new MarkerOptions().position(vol_1));
             mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(vol_1, 12f));
         }
+
+
+
+        /////////////  DIUJO ZONAS - POLIGIONOS /////////////////
+        Polygon polygon1 = mMap.addPolygon(new PolygonOptions()
+                .add(new LatLng(-34.470327, -58.683718),
+                        new LatLng(-34.478402, -58.673591),
+                        new LatLng( -34.488080, -58.694278),
+                        new LatLng(-34.475546, -58.704168))
+                .strokeColor(Color.RED));
+        polygon1.setTag("ZONA 1");
+        polygon1.setStrokeWidth(4f);
+
+
+
+        Polygon polygon2 = mMap.addPolygon(new PolygonOptions()
+                .add(new LatLng(-34.470327, -58.683718),
+                        new LatLng(-34.447765, -58.700565),
+                        new LatLng( -34.468960, -58.756097),
+                        new LatLng( -34.474217, -58.736015))
+                .strokeColor(BLUE));
+        polygon2.setTag("ZONA 2");
+        polygon2.setStrokeWidth(4f);
+
+
+        Polygon polygon3 = mMap.addPolygon(new PolygonOptions()
+                .add(new LatLng(-34.470327, -58.683718),
+                        new LatLng(-34.468210, -58.623871),
+                        new LatLng(  -34.446975,  -58.674276),
+                        new LatLng( -34.466990, -58.683652))
+                .strokeColor(Color.GREEN));
+        polygon3.setTag("ZONA 3");
+        polygon3.setStrokeWidth(4f);
+
+
+        ///////////// FIN  DIUJO ZONAS - POLIGIONOS /////////////////
+
+
 
     }
 }

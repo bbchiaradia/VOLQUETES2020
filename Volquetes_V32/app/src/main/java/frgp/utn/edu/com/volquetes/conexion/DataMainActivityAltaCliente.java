@@ -36,7 +36,9 @@ public class DataMainActivityAltaCliente extends AsyncTask<String, Void, String>
         String telParticular_cliente = urls[5];
         String telLaboral_cliente = urls[6];
         String codigo_cliente = urls[7];
-        System.out.println("nombre: " + nombre_cliente + "direccion   " + direccion_cliente + " - email " + email_cliente + " - cuit " + cuit_cliente + " - cel " + celular_cliente + " - partic " + telParticular_cliente+ " - Laboral " + telLaboral_cliente + " - codigo " + codigo_cliente  );
+        String latitud = urls[8];
+        String longitud = urls[9];
+        System.out.println("nombre: " + nombre_cliente + "direccion   " + direccion_cliente + " - email " + email_cliente + " - cuit " + cuit_cliente + " - cel " + celular_cliente + " - partic " + telParticular_cliente+ " - Laboral " + telLaboral_cliente + " - codigo " + codigo_cliente + "- latitud" + latitud + "- longitud" + longitud  );
 
 
         try {
@@ -52,11 +54,11 @@ public class DataMainActivityAltaCliente extends AsyncTask<String, Void, String>
             ///Valido si no existen registros para realizar el Insert
             if(band==0){
                 Statement st = con.createStatement();
-                int rs = st.executeUpdate("INSERT INTO `clientes` (`nombreCliente`, `direccion`, `email`, `cuit`, `celular`,`telefonoParticular`,`telefonoLaboral`, `codCliente`) VALUES ('"+nombre_cliente+"','"+direccion_cliente+"','"+email_cliente+"', '"+cuit_cliente+"','"+celular_cliente+"', '"+telParticular_cliente+"','"+telLaboral_cliente+"', '"+codigo_cliente+"')");
+                int rs = st.executeUpdate("INSERT INTO `clientes` (`nombreCliente`, `direccion`, `email`, `cuit`, `celular`,`telefonoParticular`,`telefonoLaboral`, `codCliente`,`latitud`, `longitud`) VALUES ('"+nombre_cliente+"','"+direccion_cliente+"','"+email_cliente+"', '"+cuit_cliente+"','"+celular_cliente+"', '"+telParticular_cliente+"','"+telLaboral_cliente+"', '"+codigo_cliente+"' , '"+latitud+"', '"+longitud+"')");
                 System.out.println(rs);
                 response = "Carga exitosa";
                 //Seteo el nombre del usuario para mostrar en el toast
-                cliente = new Cliente(nombre_cliente,direccion_cliente,email_cliente,cuit_cliente,celular_cliente,telParticular_cliente,telLaboral_cliente,codigo_cliente);
+                cliente = new Cliente(nombre_cliente,direccion_cliente,email_cliente,cuit_cliente,celular_cliente,telParticular_cliente,telLaboral_cliente,codigo_cliente,latitud,longitud);
             }
 
 

@@ -36,7 +36,9 @@ public class DataMainActivityModificarCliente extends AsyncTask<String, Void, St
         String telParticular_cliente = urls[5];
         String telLaboral_cliente = urls[6];
         String codigo_cliente = urls[7];
-        System.out.println("nombre: " + nombre_cliente + "direccion   " + direccion_cliente + " - email " + email_cliente + " - cuit " + cuit_cliente + " - cel " + celular_cliente + " - partic " + telParticular_cliente+ " - Laboral " + telLaboral_cliente + " - codigo " + codigo_cliente  );
+        String latitud = urls[8];
+        String longitud= urls[9];
+        System.out.println("nombre: " + nombre_cliente + "direccion   " + direccion_cliente + " - email " + email_cliente + " - cuit " + cuit_cliente + " - cel " + celular_cliente + " - partic " + telParticular_cliente+ " - Laboral " + telLaboral_cliente + " - codigo " + codigo_cliente + "- latitud" + latitud + "- longitud" + longitud   );
 
 
         try {
@@ -52,7 +54,7 @@ public class DataMainActivityModificarCliente extends AsyncTask<String, Void, St
             ///Valido si no existen registros para realizar el Insert
             if(band==1){
                 Statement st = con.createStatement();
-                int rs = st.executeUpdate("UPDATE `clientes` SET `nombreCliente`='"+nombre_cliente+"',`direccion`='"+direccion_cliente+"',`telefonoParticular`='"+telParticular_cliente+"',`telefonoLaboral`='"+telLaboral_cliente+"',`celular`='"+celular_cliente+"',`cuit`='"+cuit_cliente+"',`email`='"+email_cliente+"' WHERE `codCliente` = '"+codigo_cliente+"'");
+                int rs = st.executeUpdate("UPDATE `clientes` SET `nombreCliente`='"+nombre_cliente+"',`direccion`='"+direccion_cliente+"',`telefonoParticular`='"+telParticular_cliente+"',`telefonoLaboral`='"+telLaboral_cliente+"',`celular`='"+celular_cliente+"',`cuit`='"+cuit_cliente+"',`email`='"+email_cliente+"' ,`latitud`='"+latitud+"',`longitud`='"+longitud+"' WHERE `codCliente` = '"+codigo_cliente+"'");
                 System.out.println(rs);
                 response = "Carga exitosa";
                 //Seteo el nombre del usuario para mostrar en el toast

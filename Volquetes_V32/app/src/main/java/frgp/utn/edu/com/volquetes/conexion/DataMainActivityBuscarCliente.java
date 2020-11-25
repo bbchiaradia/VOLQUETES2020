@@ -23,11 +23,13 @@ public class DataMainActivityBuscarCliente extends AsyncTask<String, Void, Strin
     final EditText cel_cliente_modif ;
     final EditText tel_par_cliente_modif;
     final EditText tel_lab_cliente_modif;
+    final EditText latitud_cliente_modif;
+    final EditText longitud_cliente_modif;
     private ProgressDialog dialog;
 
     Cliente cliente = new Cliente();
     int band = 0;
-    public DataMainActivityBuscarCliente(Context context , EditText nombre_modif,EditText direccion_modif, EditText email_modif,EditText cuit_modif,EditText cel_modif,EditText tel_par_modif,EditText tel_lab_modif ) {
+    public DataMainActivityBuscarCliente(Context context , EditText nombre_modif,EditText direccion_modif, EditText email_modif,EditText cuit_modif,EditText cel_modif,EditText tel_par_modif,EditText tel_lab_modif,  EditText latitud_cliente_modif, EditText longitud_cliente_modif) {
         this.nombre_cliente_modif = nombre_modif;
         this.direccion_cliente_modif = direccion_modif;
         this.email_cliente_modif = email_modif;
@@ -35,6 +37,8 @@ public class DataMainActivityBuscarCliente extends AsyncTask<String, Void, Strin
         this.cel_cliente_modif = cel_modif;
         this.tel_par_cliente_modif = tel_par_modif;
         this.tel_lab_cliente_modif = tel_lab_modif;
+        this.latitud_cliente_modif = latitud_cliente_modif;
+        this.longitud_cliente_modif = longitud_cliente_modif;
         this.context = context;
         dialog = new ProgressDialog(context);
 
@@ -66,7 +70,8 @@ public class DataMainActivityBuscarCliente extends AsyncTask<String, Void, Strin
                 cliente.setTelParticularCliente(rs1.getString("telefonoParticular"));
                 cliente.setTelLaboralCliente(rs1.getString("telefonoLaboral"));
                 cliente.setCodigoCliente(rs1.getString("codCliente"));
-
+                cliente.setLatitud(rs1.getString("latitud"));
+                cliente.setLongitud(rs1.getString("longitud"));
                 System.out.println(rs1.getString("nombreCliente"));
 
 
@@ -114,7 +119,8 @@ public class DataMainActivityBuscarCliente extends AsyncTask<String, Void, Strin
             this.cel_cliente_modif.setText(cliente.getCelularCliente().toString());
             this.tel_par_cliente_modif.setText(cliente.getTel_par_Cliente().toString());
             this.tel_lab_cliente_modif.setText(cliente.getTel_lab_Cliente().toString());
-
+            this.latitud_cliente_modif.setText(cliente.getLatitud().toString());
+            this.longitud_cliente_modif.setText(cliente.getLongitud().toString());
         }else if(band ==0){
             Toast.makeText(context, "El cliente ingresado no existe", Toast.LENGTH_SHORT).show();
         }

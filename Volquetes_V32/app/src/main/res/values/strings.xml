@@ -29,6 +29,8 @@
     <string name="AGREGAR">AGREGAR</string>
     <string name="BUSCAR">BUSCAR</string>
     <string name="MODIFICAR">MODIFICAR</string>
+    <string name="latitud">Latitud</string>
+    <string name="longitud">Longitud</string>
     <string name="ID_CLIENTE">ID Cliente</string>
     <string name="codigo_CLIENTE">CODIGO Cliente</string>
     <string name="codigo_volquete">CODIGO Volquete</string>

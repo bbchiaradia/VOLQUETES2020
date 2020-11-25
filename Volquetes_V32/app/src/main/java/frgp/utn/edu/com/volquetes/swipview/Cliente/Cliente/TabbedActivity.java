@@ -68,6 +68,8 @@ public class TabbedActivity extends AppCompatActivity {
         final EditText tel_par_alta = (EditText) findViewById(R.id.tel_particular_cliente_alta);
         final EditText tel_lab_alta = (EditText) findViewById(R.id.tel_laboral_cliente_alta);
         final EditText codigo_cliente_alta = (EditText) findViewById(R.id.codigo_cliente_alta);
+        final EditText latitud_cliente_alta = (EditText) findViewById(R.id.latitud_cliente);
+        final EditText longitud_cliente_alta = (EditText) findViewById(R.id.longitud_cliente);
         Button btn_alta = (Button) findViewById(R.id.btn_agregar_cliente_alta);
 
         btn_alta.setOnClickListener(new View.OnClickListener() {
@@ -120,8 +122,18 @@ public class TabbedActivity extends AppCompatActivity {
                     msj_toast_alta = msj_toast_alta + "El Cuit es invalido \n";
                 }
 
+
+                if (latitud_cliente_alta.getText().toString().isEmpty()) {
+                    msj_toast_alta = msj_toast_alta + "Campo LATITUD vacío \n";
+                }
+
+                if (longitud_cliente_alta.getText().toString().isEmpty()) {
+                    msj_toast_alta = msj_toast_alta + "Campo LONGITUD vacío \n";
+                }
+
+
                 if (msj_toast_alta.isEmpty()){
-                     new DataMainActivityAltaCliente(TabbedActivity.this).execute(nombre_alta.getText().toString(), direccion_alta.getText().toString(), email_alta.getText().toString(), cuit_alta.getText().toString(), cel_alta.getText().toString(), tel_par_alta.getText().toString(), tel_lab_alta.getText().toString(),codigo_cliente_alta.getText().toString());
+                     new DataMainActivityAltaCliente(TabbedActivity.this).execute(nombre_alta.getText().toString(), direccion_alta.getText().toString(), email_alta.getText().toString(), cuit_alta.getText().toString(), cel_alta.getText().toString(), tel_par_alta.getText().toString(), tel_lab_alta.getText().toString(),codigo_cliente_alta.getText().toString(), latitud_cliente_alta.getText().toString(), longitud_cliente_alta.getText().toString());
                     // Toast.makeText((getApplicationContext()), "se agregaria", Toast.LENGTH_SHORT).show();
                 }else{
                     Toast.makeText((getApplicationContext()), msj_toast_alta, Toast.LENGTH_SHORT).show();
@@ -144,6 +156,8 @@ public class TabbedActivity extends AppCompatActivity {
         final EditText cel_modif = (EditText) findViewById(R.id.celular_cliente_modif);
         final EditText tel_par_modif = (EditText) findViewById(R.id.tel_particular_cliente_modif);
         final EditText tel_lab_modif = (EditText) findViewById(R.id.tel_laboral_cliente_modif);
+        final EditText latitud_cliente_modif = (EditText) findViewById(R.id.latitud_cliente_modif);
+        final EditText longitud_cliente_modif = (EditText) findViewById(R.id.longitud_cliente_modif);
         Button btn_modif = (Button) findViewById(R.id.btn_modificar_cliente);
 
 
@@ -156,7 +170,7 @@ public class TabbedActivity extends AppCompatActivity {
                     msj_toast_alta = msj_toast_alta + "Campo CODIGO vacío \n";
                 }
                 if (msj_toast_alta.isEmpty()){
-                    new DataMainActivityBuscarCliente(TabbedActivity.this, nombre_modif, direccion_modif, email_modif,cuit_modif, cel_modif, tel_par_modif,tel_lab_modif ).execute(codigo_cliente_modif.getText().toString());
+                    new DataMainActivityBuscarCliente(TabbedActivity.this, nombre_modif, direccion_modif, email_modif,cuit_modif, cel_modif, tel_par_modif,tel_lab_modif,latitud_cliente_modif,longitud_cliente_modif ).execute(codigo_cliente_modif.getText().toString());
                     // Toast.makeText((getApplicationContext()), "se agregaria", Toast.LENGTH_SHORT).show();
                 }else{
                     Toast.makeText((getApplicationContext()), msj_toast_alta, Toast.LENGTH_SHORT).show();
@@ -179,6 +193,9 @@ public class TabbedActivity extends AppCompatActivity {
         final EditText cel_modif = (EditText) findViewById(R.id.celular_cliente_modif);
         final EditText tel_par_modif = (EditText) findViewById(R.id.tel_particular_cliente_modif);
         final EditText tel_lab_modif = (EditText) findViewById(R.id.tel_laboral_cliente_modif);
+        final EditText latitud_cliente_modif = (EditText) findViewById(R.id.latitud_cliente_modif);
+        final EditText longitud_cliente_modif = (EditText) findViewById(R.id.longitud_cliente_modif);
+
         Button btn_modif = (Button) findViewById(R.id.btn_modificar_cliente);
 
 
@@ -233,8 +250,18 @@ public class TabbedActivity extends AppCompatActivity {
                 if ( ValidarCuit(cuit_modif.getText().toString())== false ) {
                     msj_toast_alta = msj_toast_alta + "El Cuit es invalido \n";
                 }
+
+                if (latitud_cliente_modif.getText().toString().isEmpty()) {
+                    msj_toast_alta = msj_toast_alta + "Campo LATITUD vacío \n";
+                }
+
+                if (longitud_cliente_modif.getText().toString().isEmpty()) {
+                    msj_toast_alta = msj_toast_alta + "Campo LONGITUD vacío \n";
+                }
+
+
                 if (msj_toast_alta.isEmpty()){
-                    new DataMainActivityModificarCliente(TabbedActivity.this).execute(nombre_modif.getText().toString(), direccion_modif.getText().toString(), email_modif.getText().toString(), cuit_modif.getText().toString(), cel_modif.getText().toString(), tel_par_modif.getText().toString(), tel_lab_modif.getText().toString(),codigo_cliente_modif.getText().toString());
+                    new DataMainActivityModificarCliente(TabbedActivity.this).execute(nombre_modif.getText().toString(), direccion_modif.getText().toString(), email_modif.getText().toString(), cuit_modif.getText().toString(), cel_modif.getText().toString(), tel_par_modif.getText().toString(), tel_lab_modif.getText().toString(),codigo_cliente_modif.getText().toString(), latitud_cliente_modif.getText().toString(), longitud_cliente_modif.getText().toString());
                     // Toast.makeText((getApplicationContext()), "se agregaria", Toast.LENGTH_SHORT).show();
                 }else{
                     Toast.makeText((getApplicationContext()), msj_toast_alta, Toast.LENGTH_SHORT).show();

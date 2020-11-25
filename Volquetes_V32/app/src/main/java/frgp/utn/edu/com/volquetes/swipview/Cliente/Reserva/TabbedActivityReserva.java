@@ -138,7 +138,6 @@ public class TabbedActivityReserva extends AppCompatActivity implements View.OnC
     public void  GuardarReserva(View view){
         final EditText codigo_cliente_reserva = (EditText) findViewById(R.id.codigo_cliente_reserva);
         final EditText precio_reserva = (EditText) findViewById(R.id.precio_reserva);
-        //final Spinner categoria_alta = (Spinner) findViewById(R.id.categoria_alta);
         final EditText fecha_reserva = (EditText) findViewById(R.id.fecha_reserva);
         Button btn_agregar_reserva = (Button) findViewById(R.id.btn_agregar_reserva);
         forma_pago_alta = (Spinner) findViewById(R.id.formaPago);
@@ -164,8 +163,11 @@ public class TabbedActivityReserva extends AppCompatActivity implements View.OnC
                 FormaPago form = (FormaPago) forma_pago_alta.getSelectedItem();
                 String s = String.valueOf(form.getIdFormaPago());
 
+
+
+
                 if (msj_toast_alta.isEmpty()){
-                    new DataMainActivityAltaReserva(TabbedActivityReserva.this).execute(codigo_cliente_reserva.getText().toString(),"1",precio_reserva.getText().toString(), s ,fecha_reserva.getText().toString());
+                    new DataMainActivityAltaReserva(TabbedActivityReserva.this).execute(codigo_cliente_reserva.getText().toString(),precio_reserva.getText().toString(), s ,fecha_reserva.getText().toString(), s.toString());
                     // Toast.makeText((getApplicationContext()), "se agregaria", Toast.LENGTH_SHORT).show();
                 }else{
                     Toast.makeText((getApplicationContext()), msj_toast_alta, Toast.LENGTH_SHORT).show();

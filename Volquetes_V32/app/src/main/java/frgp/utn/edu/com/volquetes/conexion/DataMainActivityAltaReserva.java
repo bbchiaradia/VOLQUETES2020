@@ -2,6 +2,7 @@ package frgp.utn.edu.com.volquetes.conexion;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.widget.Toast;
 
@@ -11,11 +12,14 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 
 import frgp.utn.edu.com.volquetes.R;
+import frgp.utn.edu.com.volquetes.entidad.Cliente;
 import frgp.utn.edu.com.volquetes.entidad.Reserva;
+import frgp.utn.edu.com.volquetes.principal;
 
 public class DataMainActivityAltaReserva extends AsyncTask<String, Void, String>  {
     int band = 0;
     Reserva reserva = new Reserva();
+    Cliente cliente = new Cliente();
     private Context context;
     private ProgressDialog dialog;
     public DataMainActivityAltaReserva (Context context){
@@ -26,14 +30,12 @@ public class DataMainActivityAltaReserva extends AsyncTask<String, Void, String>
 
     protected String doInBackground(String... urls) {
         String response = "";
-        String idCliente = urls[0];
-        String idVolquete = urls[1];
-        String idUsuario = urls[1];
-        String precio = urls[2];
-        String idFormaPago = urls[3];
-        String fechaEntrega = urls[4];
+        String codCliente = urls[0];
+        String precio = urls[1];
+        String idFormaPago = urls[2];
+        String fechaEntrega = urls[3];
         //String fechaRetiro = urls[5];
-        System.out.println("idCliente: " + idCliente + "idVolquete   " + idVolquete + " - idUsuario " + idUsuario + " - precio " + precio + " - idFormaPago " + idFormaPago + " - fechaEntrega " + fechaEntrega+ " - fechaRetiro " );
+        System.out.println("codCliente: " + codCliente + " - precio " + precio + " - idFormaPago " + idFormaPago + " - fechaEntrega " + fechaEntrega );
 
 
 
@@ -54,11 +56,20 @@ public class DataMainActivityAltaReserva extends AsyncTask<String, Void, String>
             }
 
 
+            Statement st3 = con.createStatement();
+            ResultSet rs3 = st3.executeQuery("SELECT idCliente FROM `clientes` WHERE codCliente='"+codCliente+"'");
+            while(rs3.next()) {
+                if(rs3.getInt("idCliente") != 0){
+                    cliente.setId(rs3.getInt("idCliente"));
+                }
+
+            }
 
             if(band==1){
                 Statement st = con.createStatement();
-                int rs = st.executeUpdate("INSERT INTO `reservas` (`idCliente`, `idVolquete`, `idUsuario`, `precio`, `idFormaPago`, `fechaEntrega`) VALUES ('"+idCliente+"','"+reserva.getIdVolquete()+"','"+idUsuario+"', '"+precio+"','"+idFormaPago+"','"+ fechaEntrega +"' )");
-                System.out.println(rs);
+                System.out.println("ACAAAAAA antes RS");
+                int rs = st.executeUpdate("INSERT INTO `reservas` (`idCliente`, `idVolquete`, `idUsuario`, `precio`, `idFormaPago`, `fechaEntrega`) VALUES ('"+cliente.getId()+"','"+reserva.getIdVolquete()+"','1', '"+precio+"','"+idFormaPago+"','"+ fechaEntrega +"' )");
+                System.out.println("ACAAAAAA despues RS" + rs);
                 Statement st1 = con.createStatement();
                 int rs2 = st1.executeUpdate("UPDATE `volquetes` SET `idEstadoVolquete`= 2 WHERE idVolquete = " +reserva.getIdVolquete() );//seteoDesHabilitado
                 System.out.println(rs2);
@@ -87,7 +98,10 @@ public class DataMainActivityAltaReserva extends AsyncTask<String, Void, String>
      if(band ==0){
          Toast.makeText(this.context, "No hay volquetes disponibles", Toast.LENGTH_SHORT).show();
      }else{
-         Toast.makeText(this.context, "Se le asigno el volquete: " + reserva.getIdVolquete(), Toast.LENGTH_SHORT).show();
+         Toast.makeText(this.context, "Reserva Exitosa - Se le asigno el volquete: " + reserva.getIdVolquete(), Toast.LENGTH_SHORT).show();
+         Intent intent_name = new Intent();
+         intent_name.setClass(context, principal.class);
+         context.startActivity(intent_name);
      }
 
     }

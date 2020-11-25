@@ -12,7 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="170dp"
-        android:layout_marginTop="340dp"
+        android:layout_marginTop="480dp"
         android:onClick="Alta"
         android:text="@string/AGREGAR" />
 
@@ -109,11 +109,37 @@
         android:layout_width="150dp"
         android:layout_height="45dp"
         android:layout_marginLeft="10dp"
-        android:layout_marginTop="340dp"
+        android:layout_marginTop="360dp"
         android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz123456789"
         android:ems="10"
         android:hint="@string/codigo_CLIENTE"
         android:inputType="textPersonName"
         android:textSize="16sp" />
+
+
+    <EditText
+        android:id="@+id/latitud_cliente"
+        android:layout_width="150dp"
+        android:layout_height="45dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="420dp"
+        android:digits="-0123456789."
+        android:ems="10"
+        android:hint="@string/latitud"
+        android:inputType="textPersonName"
+        android:textSize="16sp" />
+
+    <EditText
+        android:id="@+id/longitud_cliente"
+        android:layout_width="150dp"
+        android:layout_height="45dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="480dp"
+        android:digits="-0123456789."
+        android:ems="10"
+        android:hint="@string/longitud"
+        android:inputType="textPersonName"
+        android:textSize="16sp" />
+
 
 </FrameLayout>

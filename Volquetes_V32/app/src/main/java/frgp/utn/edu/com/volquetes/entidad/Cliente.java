@@ -11,10 +11,12 @@ public class Cliente {
     private String tel_par_Cliente;
     private String tel_lab_Cliente;
     private String codigoCliente;
+    private String latitud;
+    private String longitud;
 
     public Cliente(){
     }
-    public Cliente(String nombre , String direccion, String email , String cuit , String celular , String tel_part,String tel_lab, String codigoCli){
+    public Cliente(String nombre , String direccion, String email , String cuit , String celular , String tel_part,String tel_lab, String codigoCli, String lat, String lon){
         this.nombreCliente=nombre;
         this.direccionCliente=direccion;
         this.emailCliente=email;
@@ -23,7 +25,10 @@ public class Cliente {
         this.tel_par_Cliente=tel_part;
         this.tel_lab_Cliente=tel_lab;
         this.codigoCliente=codigoCli;
+        this.latitud=lat;
+        this.longitud=lon;
     }
+
 
 
     public int getId() {
@@ -62,6 +67,12 @@ public class Cliente {
         return codigoCliente;
     }
 
+    public String getLongitud() {
+        return longitud;
+    }
+    public String getLatitud() {
+        return latitud;
+    }
 
     public void setId(int id) {
         this.id = id;
@@ -82,6 +93,17 @@ public class Cliente {
     public void setCodigoCliente(String codigoCliente) {
         this.codigoCliente = codigoCliente;
     }
+
+
+    public void setLongitud(String longitud) {
+        this.longitud = longitud;
+    }
+
+    public void setLatitud(String latitud) {
+        this.latitud = latitud;
+    }
+
+
 
     @Override
     public String toString(){
