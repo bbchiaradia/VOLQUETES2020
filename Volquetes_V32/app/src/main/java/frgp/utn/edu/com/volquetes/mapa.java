@@ -1,7 +1,11 @@
 package frgp.utn.edu.com.volquetes;
 
+import android.content.Intent;
 import android.graphics.Color;
+import android.location.Location;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 
 import androidx.fragment.app.FragmentActivity;
 
@@ -9,6 +13,8 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.Circle;
+import com.google.android.gms.maps.model.CircleOptions;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.Polygon;
@@ -24,6 +30,8 @@ public class mapa extends FragmentActivity implements OnMapReadyCallback  {
 
     private GoogleMap mMap;
 
+    Button btn_mapaInicio;
+    Integer map=0;
 
 
     @Override
@@ -31,11 +39,27 @@ public class mapa extends FragmentActivity implements OnMapReadyCallback  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mapa);
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
-        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
-                .findFragmentById(R.id.map);
-        mapFragment.getMapAsync(this);
-    }
 
+
+            final SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
+                    .findFragmentById(R.id.map);
+            mapFragment.getMapAsync(this);
+
+
+
+        btn_mapaInicio = (Button) findViewById(R.id.btn_mapa_inicio);
+        btn_mapaInicio.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent abrir = new Intent(mapa.this, principal.class);
+                startActivity(abrir);
+            }
+
+            ;
+
+        });
+
+    }
 
     /**
      * Manipulates the map once available.
@@ -88,6 +112,7 @@ public class mapa extends FragmentActivity implements OnMapReadyCallback  {
 
 
         /////////////  DIUJO ZONAS - POLIGIONOS /////////////////
+       /*
         Polygon polygon1 = mMap.addPolygon(new PolygonOptions()
                 .add(new LatLng(-34.470327, -58.683718),
                         new LatLng(-34.478402, -58.673591),
@@ -120,6 +145,67 @@ public class mapa extends FragmentActivity implements OnMapReadyCallback  {
 
 
         ///////////// FIN  DIUJO ZONAS - POLIGIONOS /////////////////
+
+
+        */
+
+   //DIBUJO ZONAS DE CIRCULOS
+        Circle circle = mMap.addCircle(new CircleOptions()
+                .center(new LatLng(-34.455587, -58.685503))
+                .radius(1800)
+                .strokeColor(Color.RED));
+        circle.setStrokeWidth(4f);
+        circle.setTag("Zona1");
+
+
+        Circle circle2 = mMap.addCircle(new CircleOptions()
+                .center(new LatLng(-34.480523, -58.717237))
+                .radius(1600)
+                .strokeColor(Color.BLUE));
+        circle2.setStrokeWidth(4f);
+        circle2.setTag("Zona2");
+
+
+        Circle circle3 = mMap.addCircle(new CircleOptions()
+                .center(new LatLng(-34.450193, -58.725039))
+                .radius(1800)
+                .strokeColor(Color.GREEN));
+        circle2.setStrokeWidth(4f);
+        circle2.setTag("Zona2");
+
+
+        Circle circle4 = mMap.addCircle(new CircleOptions()
+                .center(new LatLng(-34.469302, -58.653062))
+                .radius(1500)
+                .strokeColor(Color.YELLOW));
+        circle2.setStrokeWidth(4f);
+        circle2.setTag("Zona2");
+
+        //funcion que revisa si un punto esta dentro del circulo zona 1
+
+        float[] disResultado = new float[2];
+        // LatLng pos = new LatLng(40.416775, -3.703790);
+        LatLng pos = new LatLng(-34.470327, -58.683718);
+        double lat = pos.latitude; //getLatitude
+        double lng = pos.longitude;//getLongitude
+
+
+        Location.distanceBetween( pos.latitude, pos.longitude,
+                circle.getCenter().latitude,
+                circle.getCenter().longitude,
+                disResultado);
+
+        if(disResultado[0] > circle.getRadius()){
+            System.out.println("FUERAAAA ZONA 1" );
+        } else {
+            System.out.println("DENTROOO ZONA 1" );
+        }
+
+
+
+
+
+
 
 
 
