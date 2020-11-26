@@ -27,7 +27,6 @@ public class DataMainActivitBuscarUbicacionReservas extends AsyncTask<String, Vo
     Integer tamanio =0;
 
     ArrayList<String> Arraylat = new ArrayList<>();
-    ArrayList<String> ArrayTamano = new ArrayList<>();
     ArrayList<String> Arraylong = new ArrayList<>();
     GoogleMap Map;
      ArrayList<Double> descripcion = new ArrayList<Double>();
@@ -45,6 +44,7 @@ public class DataMainActivitBuscarUbicacionReservas extends AsyncTask<String, Vo
     ArrayList<String> Coleccionn = new ArrayList<String>();
     ArrayList<String> Arrayx = new ArrayList<>();
     ArrayList<String> Arrayy = new ArrayList<>();
+    ArrayList<String> ArrayCliente = new ArrayList<>();
     ArrayList<Ubicacion> ubicaciones = new ArrayList<>();
 
 
@@ -60,7 +60,7 @@ public class DataMainActivitBuscarUbicacionReservas extends AsyncTask<String, Vo
             ///Valido si existe el Cliente que voy a registrar:
             Statement st1 = con.createStatement();
 
-                ResultSet rs1 = st1.executeQuery("SELECT distinct COUNT(*) as total, c.latitud, c.longitud , c.nombreCliente , c.codCliente\n" +
+                ResultSet rs1 = st1.executeQuery("SELECT distinct COUNT(*) as total, c.latitud, c.longitud , c.nombreCliente , c.codCliente, c.nombreCliente, c.codCliente\n" +
                         "FROM `reservas` r  inner join clientes c on c.idCliente = r.idCliente\n" +
                         "WHERE r.fechaRetiro is null\n" +
                         "and not (c.latitud is null or c.longitud is null) \n" +
@@ -74,7 +74,7 @@ public class DataMainActivitBuscarUbicacionReservas extends AsyncTask<String, Vo
                     Arrayx.add( rs1.getString("latitud"));
                     //Arrayx.add( rs1.getString("longitud"));
                     Arrayy.add( rs1.getString("longitud"));
-
+                    ArrayCliente.add( rs1.getString("codCliente") +" - "+  rs1.getString("nombreCliente")+" - Reservas: " +  rs1.getString("total"));
                    // Double latitud = rs1.getDouble("latitud");
                   //  Double longitud = rs1.getDouble("longitud");
                    // Ubicacion ubi = new Ubicacion(latitud,longitud);
@@ -103,16 +103,22 @@ public class DataMainActivitBuscarUbicacionReservas extends AsyncTask<String, Vo
 
             Arraylat = Arrayx;
             Arraylong = Arrayy;
-            System.out.println("Array lat"+Arraylat);
-            System.out.println("Array long"+Arraylong);
+
+
 
             Integer tamanoLista1 = Arraylong.size();
 
             this.tamanio = tamanoLista1;
 
+            System.out.println("Array lat"+Arraylat);
+            System.out.println("Array long"+Arraylong);
+            System.out.println("TAMANIOOOOO"+tamanio);
+
             Intent intent = new Intent(this.context, mapa.class);
             intent.putExtra("miLista", Arrayx);
             intent.putExtra("miLista2", Arrayy);
+            intent.putExtra("tamanio", tamanio);
+            intent.putExtra("milistaCliente", ArrayCliente);
             this.context.startActivity(intent);
 
 

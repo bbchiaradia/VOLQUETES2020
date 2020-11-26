@@ -56,4 +56,5 @@
     <string name="DISPONIBLES">STOCK DISPONIBLE:</string>
     <string name="cantidad_reservas">CANTIDAD DE RESERVAS DEL CLIENTE:</string>
     <string name="RESERVADOS">STOCK RESERVADOS:</string>
+    <string name="inicio">Volver al inicio</string>
 </resources>
