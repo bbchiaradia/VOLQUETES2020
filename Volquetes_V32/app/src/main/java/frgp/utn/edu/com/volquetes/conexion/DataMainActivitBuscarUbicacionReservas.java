@@ -33,6 +33,7 @@ public class DataMainActivitBuscarUbicacionReservas extends AsyncTask<String, Vo
 
     int band = 0;
 
+    /*
     public DataMainActivitBuscarUbicacionReservas(Context context, ArrayList Latitud, ArrayList Longitud, ArrayList Descripcion, Integer Tamanio) {
         this.context = context;
         this.Arraylat = Latitud;
@@ -40,12 +41,15 @@ public class DataMainActivitBuscarUbicacionReservas extends AsyncTask<String, Vo
         this.descripcion = Descripcion;
         this.tamanio = Tamanio;
     }
+    */
+    public DataMainActivitBuscarUbicacionReservas(Context context) {
+        this.context = context;
+    }
+
     int cantReg = 0;
-    ArrayList<String> Coleccionn = new ArrayList<String>();
     ArrayList<String> Arrayx = new ArrayList<>();
     ArrayList<String> Arrayy = new ArrayList<>();
     ArrayList<String> ArrayCliente = new ArrayList<>();
-    ArrayList<Ubicacion> ubicaciones = new ArrayList<>();
 
 
 
@@ -70,16 +74,9 @@ public class DataMainActivitBuscarUbicacionReservas extends AsyncTask<String, Vo
                 int contador = 0;
                 while(rs1.next()) {
                 band=1;
-                    Coleccionn.add( rs1.getString("codCliente")+" - Cantidad Reservas: "+ rs1.getString("total"));
                     Arrayx.add( rs1.getString("latitud"));
-                    //Arrayx.add( rs1.getString("longitud"));
                     Arrayy.add( rs1.getString("longitud"));
                     ArrayCliente.add( rs1.getString("codCliente") +" - "+  rs1.getString("nombreCliente")+" - Reservas: " +  rs1.getString("total"));
-                   // Double latitud = rs1.getDouble("latitud");
-                  //  Double longitud = rs1.getDouble("longitud");
-                   // Ubicacion ubi = new Ubicacion(latitud,longitud);
-                   // ubicaciones.add(ubi);
-
                 }
 
             ///Valido si no existen registros para realizar el Insert
@@ -104,8 +101,6 @@ public class DataMainActivitBuscarUbicacionReservas extends AsyncTask<String, Vo
             Arraylat = Arrayx;
             Arraylong = Arrayy;
 
-
-
             Integer tamanoLista1 = Arraylong.size();
 
             this.tamanio = tamanoLista1;
@@ -120,8 +115,6 @@ public class DataMainActivitBuscarUbicacionReservas extends AsyncTask<String, Vo
             intent.putExtra("tamanio", tamanio);
             intent.putExtra("milistaCliente", ArrayCliente);
             this.context.startActivity(intent);
-
-
 
 
         }else if(band ==0){

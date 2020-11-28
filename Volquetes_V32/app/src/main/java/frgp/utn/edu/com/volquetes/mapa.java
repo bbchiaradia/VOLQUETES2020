@@ -80,7 +80,28 @@ public class mapa extends FragmentActivity implements OnMapReadyCallback  {
         Integer tamanio=0;
 
 
-        new DataMainActivitBuscarUbicacionReservas(mapa.this, ArrayX, ArrayY, ArrayDescripcionMarker,tamanio).execute();
+        new DataMainActivitBuscarUbicacionReservas(mapa.this).execute();
+
+        /*
+////////////////  PONIENDOLE EXPLICITAMENTE LOS DATOS SI /////////////////////////
+        ArrayList<String> lista = new ArrayList<>();
+        lista.add("-34.4703236");
+        lista.add("-34.4720495");
+        lista.add("-34.4586286");
+        lista.add("-34.4762176");
+        lista.add("-34.4500756");
+
+        ArrayList<String> lista2 = new ArrayList<>();
+        lista2.add("-58.6838082");
+        lista2.add("-58.6904324");
+        lista2.add("-58.7001067");
+        lista2.add("-58.7232627");
+        lista2.add("-58.7303537");
+
+        tamanio = 5;
+///////////////////////////////////////////////////////////////////////////////////
+*/
+
 
 
         System.out.println("aca lista1 ANTESSSS" +getIntent().getStringArrayListExtra("miLista"));
@@ -94,18 +115,21 @@ public class mapa extends FragmentActivity implements OnMapReadyCallback  {
         double[] failsArray = new double[tamanio]; //create an array with the size of the failList
         for (int i = 0; i < tamanio; ++i) { //iterate over the elements of the list
             failsArray[i] = Double.parseDouble(getIntent().getStringArrayListExtra("miLista").get(i)); //store each element as a double in the array
+            // failsArray[i] = Double.parseDouble(lista.get(i)); //store each element as a double in the array
         }
 
         /// Casteo la lista que tiene las longitudes
         double[] failsArray2 = new double[tamanio]; //create an array with the size of the failList
         for (int i = 0; i < tamanio; ++i) { //iterate over the elements of the list
             failsArray2[i] = Double.parseDouble(getIntent().getStringArrayListExtra("miLista2").get(i)); //store each element as a double in the array
+            // failsArray2[i] = Double.parseDouble(lista2.get(i)); //store each element as a double in the array
         }
 
         ///// Recorro las listas y genero el marker.
         for (int i = 0; i < tamanio; i++){
             LatLng vol_1 = new LatLng(failsArray[i], failsArray2[i]);
-            mMap.addMarker(new MarkerOptions().position(vol_1).title(getIntent().getStringArrayListExtra("milistaCliente").get(i)));
+           mMap.addMarker(new MarkerOptions().position(vol_1).title(getIntent().getStringArrayListExtra("milistaCliente").get(i)));
+            //  mMap.addMarker(new MarkerOptions().position(vol_1));
             mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(vol_1, 12f));
         }
 
@@ -203,11 +227,7 @@ public class mapa extends FragmentActivity implements OnMapReadyCallback  {
 
 
 
-
-
-
-
-
+        
 
     }
 }
