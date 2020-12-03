@@ -47,6 +47,8 @@
     <string name="zona">Seleccione zona: </string>
     <string name="fecha_selecionar">Abrir Calendario</string>
     <string name="fecha_entrega">Fecha Entrega</string>
+    <string name="fecha_desde">Fecha Desde</string>
+    <string name="fecha_hasta">Fecha Hasta</string>
     <string name="title_activity_reportes_principal">REPORTES</string>
     <string name="btn_reporte1">STOCK VOLQUETES</string>
     <string name="btn_reporte2">RESERVAS POR CLIENTE</string>
@@ -54,7 +56,7 @@
     <string name="btn_reporte4">MONTO ACUMULADO POR CLIENTE</string>
     <string name="title_activity_reporte1">STOCK VOLQUETES</string>
     <string name="title_activity_reporte2">RESERVAS POR CLIENTE</string>
-    <string name="title_activity_reporte3">REPORTE 3</string>
+    <string name="title_activity_reporte3">RESERVAS POR FECHA</string>
     <string name="DISPONIBLES">STOCK DISPONIBLE:</string>
     <string name="cantidad_reservas">CANTIDAD DE RESERVAS DEL CLIENTE:</string>
     <string name="RESERVADOS">STOCK RESERVADOS:</string>

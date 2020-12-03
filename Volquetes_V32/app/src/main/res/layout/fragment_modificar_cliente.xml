@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/huella"
     tools:context=".swipview.Cliente.Cliente.ModificarClienteFragment">
 
     <EditText
@@ -96,7 +97,7 @@
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:layout_marginLeft="10dp"
-        android:layout_marginTop="600dp"
+        android:layout_marginTop="620dp"
         android:background="@color/colorPrimaryDark"
         android:onClick="BorrarCliente"
         android:src="@drawable/baja" />
@@ -174,8 +175,23 @@
         android:textSize="16sp" />
 
 
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="180dp"
+        android:layout_height="36dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="530dp"
+        android:text="@string/zona"
+        android:textColor="@android:color/darker_gray" />
 
 
+    <Spinner
+        android:id="@+id/zona_modif"
+        android:layout_width="180dp"
+        android:layout_height="30dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="570dp"
+        android:textColor="@android:color/background_dark" />
 
 
 </FrameLayout>

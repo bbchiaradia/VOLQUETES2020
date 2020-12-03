@@ -52,7 +52,7 @@ public class DataMainActivityListarCliente extends AsyncTask<String, Void, Strin
                 while(rs1.next()) {
                     band=1;
                     cliente.setCodigoCliente(rs1.getString("codCliente"));
-                    Coleccionn.add(rs1.getString("nombreCliente")+" - "+ rs1.getString("codCliente") +"\nDireccion: "+ rs1.getString("direccion") +"\nCUIT: "+ rs1.getString("cuit") + "\n E-mail: "+ rs1.getString("email")+ "\nTelefono Celular: "+ rs1.getString("celular") + "\nTelefono Particular: "+ rs1.getString("telefonoParticular")  + "\nTelefono Laboral: "+ rs1.getString("telefonoLaboral")  + "\nLatitud: "+ rs1.getString("latitud") + "          Longitud: "+ rs1.getString("longitud") );
+                    Coleccionn.add(rs1.getString("nombreCliente")+" - "+ rs1.getString("codCliente") +"\nDireccion: "+ rs1.getString("direccion") +"\nCUIT: "+ rs1.getString("cuit") + "\n E-mail: "+ rs1.getString("email")+ "\nTelefono Celular: "+ rs1.getString("celular") + "\nTelefono Particular: "+ rs1.getString("telefonoParticular")  + "\nTelefono Laboral: "+ rs1.getString("telefonoLaboral")  + "\nLatitud: "+ rs1.getString("latitud") + "          Longitud: "+ rs1.getString("longitud")+ "\nZONA: "+ rs1.getString("idZona") );
                 }
             }else{
                 ResultSet rs1 = st1.executeQuery("SELECT * FROM `clientes` where codCliente like '%"+codigo_cliente+"%' or nombreCliente like '%"+codigo_cliente+"%' or email like '%"+codigo_cliente+"%'  or cuit like '%"+codigo_cliente+"%'  or direccion like '%"+codigo_cliente+"%' or celular like '%"+codigo_cliente+"%' or telefonoParticular like '%"+codigo_cliente+"%' or telefonoLaboral like '%"+codigo_cliente+"%'");
@@ -60,7 +60,7 @@ public class DataMainActivityListarCliente extends AsyncTask<String, Void, Strin
                     band=1;
                     cliente.setCodigoCliente(rs1.getString("codCliente"));
                     //Coleccionn.add(rs1.getString("nombreCliente")+" - "+ rs1.getString("codCliente"));
-                    Coleccionn.add(rs1.getString("nombreCliente")+" - "+ rs1.getString("codCliente") +"\nDireccion: "+ rs1.getString("direccion") +"\nCUIT: "+ rs1.getString("cuit") +"\nE-mail: "+ rs1.getString("email") + "\nTelefono Celular: "+ rs1.getString("celular") + "\nTelefono Particular: "+ rs1.getString("telefonoParticular")  + "\nTelefono Laboral: "+ rs1.getString("telefonoLaboral")+ "\nLatitud: "+ rs1.getString("latitud") + "          Longitud: "+ rs1.getString("longitud")  );
+                    Coleccionn.add(rs1.getString("nombreCliente")+" - "+ rs1.getString("codCliente") +"\nDireccion: "+ rs1.getString("direccion") +"\nCUIT: "+ rs1.getString("cuit") +"\nE-mail: "+ rs1.getString("email") + "\nTelefono Celular: "+ rs1.getString("celular") + "\nTelefono Particular: "+ rs1.getString("telefonoParticular")  + "\nTelefono Laboral: "+ rs1.getString("telefonoLaboral")+ "\nLatitud: "+ rs1.getString("latitud") + "          Longitud: "+ rs1.getString("longitud")+ "\nZONA: "+ rs1.getString("idZona")  );
                 }
             }
 

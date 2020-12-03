@@ -8,4 +8,105 @@
     tools:context=".swipview.Cliente.Reportes.reporte3"
     tools:showIn="@layout/activity_reporte3">
 
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".swipview.Cliente.Reportes.reporte2.ListarReporte3Fragment">
+
+        <ImageView
+            android:id="@+id/imageView10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="0dp"
+            android:src="@drawable/cinta_small" />
+
+
+
+        <ImageView
+            android:id="@+id/imageView11"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="150dp"
+            android:src="@drawable/cinta_small" />
+
+        <Button
+            android:id="@+id/btn_buscar_cliente_listar_reporte3"
+            android:layout_width="81dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="350dp"
+            android:layout_marginTop="55dp"
+            android:onClick="BuscarClienteReporte3"
+            android:text="@string/BUSCAR" />
+
+
+        <EditText
+            android:id="@+id/fecha_reserva_desdeReporte3"
+            android:layout_width="180dp"
+            android:layout_height="45dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="25dp"
+            android:clickable="false"
+            android:focusable="false"
+            android:enabled="false"
+            android:ems="10"
+            android:hint="@string/fecha_desde"
+            android:inputType="time"
+            android:textColor="@android:color/darker_gray"
+            android:textSize="16sp"
+            android:visibility="visible"
+            tools:visibility="visible" />
+
+
+        <Button
+            android:id="@+id/btn_fechaDesdeReporte3"
+            android:layout_width="38dp"
+            android:layout_height="43dp"
+            android:layout_marginLeft="250dp"
+            android:layout_marginTop="25dp"
+            android:background="@drawable/calendario"
+            android:onClick="FechaDesdeActivar" />
+
+        <EditText
+            android:id="@+id/fecha_reserva_hastaeporte3"
+            android:layout_width="180dp"
+            android:layout_height="45dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="85dp"
+            android:clickable="false"
+            android:focusable="false"
+            android:enabled="false"
+            android:ems="10"
+            android:hint="@string/fecha_hasta"
+            android:inputType="time"
+            android:textColor="@android:color/darker_gray"
+            android:textSize="16sp"
+            android:visibility="visible"
+            tools:visibility="visible" />
+
+
+        <Button
+            android:id="@+id/btn_fechaHastaReporte3"
+            android:layout_width="38dp"
+            android:layout_height="43dp"
+            android:layout_marginLeft="250dp"
+            android:layout_marginTop="85dp"
+            android:background="@drawable/calendario"
+            android:onClick="FechaHastaActivar" />
+
+
+        <ListView
+            android:id="@+id/ListaClientesReservasReporte3"
+            android:layout_width="match_parent"
+            android:layout_height="498dp"
+            android:layout_marginTop="150dp"
+            android:cacheColorHint="@android:color/holo_red_dark"
+            android:clickable="true"
+            android:divider="@android:color/holo_red_dark"
+            android:dividerHeight="4dp"
+            android:paddingTop="35dp" />
+
+    </FrameLayout>
+
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

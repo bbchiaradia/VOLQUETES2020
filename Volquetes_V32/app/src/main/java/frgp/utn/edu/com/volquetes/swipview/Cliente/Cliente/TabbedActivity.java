@@ -36,8 +36,8 @@ import frgp.utn.edu.com.volquetes.swipview.Cliente.Reserva.TabbedActivityReserva
 
 
 public class TabbedActivity extends AppCompatActivity {
-    Spinner zona_alta;
-
+Spinner zona_alta;
+    Spinner zona_modif;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +49,6 @@ public class TabbedActivity extends AppCompatActivity {
         TabLayout tabs = findViewById(R.id.tabs);
         tabs.setupWithViewPager(viewPager);
 
-
     }
 
 
@@ -57,6 +56,8 @@ public class TabbedActivity extends AppCompatActivity {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_principal, menu);
         return true;
+
+
 
     }
 
@@ -68,6 +69,11 @@ public class TabbedActivity extends AppCompatActivity {
 
 
     public void Alta(View view) {
+
+
+        zona_alta = (Spinner) findViewById(R.id.zona_alta);
+        DataMainActivityZonaCliente task = new DataMainActivityZonaCliente(TabbedActivity.this, zona_alta);
+        task.execute();
 
         final EditText nombre_alta = (EditText) findViewById(R.id.nombre_cliente_alta);
         final EditText direccion_alta = (EditText) findViewById(R.id.direccion_cliente_alta);
@@ -81,9 +87,6 @@ public class TabbedActivity extends AppCompatActivity {
         final EditText longitud_cliente_alta = (EditText) findViewById(R.id.longitud_cliente);
 
 
-        zona_alta = (Spinner) findViewById(R.id.zona_alta);
-        DataMainActivityZonaCliente task = new DataMainActivityZonaCliente(TabbedActivity.this, zona_alta);
-        task.execute();
 
 
 
@@ -193,6 +196,9 @@ public class TabbedActivity extends AppCompatActivity {
                 }
                 if (msj_toast_alta.isEmpty()){
                     new DataMainActivityBuscarCliente(TabbedActivity.this, nombre_modif, direccion_modif, email_modif,cuit_modif, cel_modif, tel_par_modif,tel_lab_modif,latitud_cliente_modif,longitud_cliente_modif ).execute(codigo_cliente_modif.getText().toString());
+                    zona_modif = (Spinner) findViewById(R.id.zona_modif);
+                    DataMainActivityZonaCliente task = new DataMainActivityZonaCliente(TabbedActivity.this, zona_modif);
+                    task.execute();
                     // Toast.makeText((getApplicationContext()), "se agregaria", Toast.LENGTH_SHORT).show();
                 }else{
                     Toast.makeText((getApplicationContext()), msj_toast_alta, Toast.LENGTH_SHORT).show();
@@ -217,7 +223,7 @@ public class TabbedActivity extends AppCompatActivity {
         final EditText tel_lab_modif = (EditText) findViewById(R.id.tel_laboral_cliente_modif);
         final EditText latitud_cliente_modif = (EditText) findViewById(R.id.latitud_cliente_modif);
         final EditText longitud_cliente_modif = (EditText) findViewById(R.id.longitud_cliente_modif);
-
+        zona_modif = (Spinner) findViewById(R.id.zona_modif);
         Button btn_modif = (Button) findViewById(R.id.btn_modificar_cliente);
 
 
@@ -225,6 +231,11 @@ public class TabbedActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String msj_toast_alta = "";
+
+
+                Zona form = (Zona) zona_modif.getSelectedItem();
+                String s = String.valueOf(form.getIdZona());
+
 
                 if (nombre_modif.getText().toString().isEmpty()) {
                     msj_toast_alta = msj_toast_alta + "Campo NOMBRE vacío \n";
@@ -283,7 +294,7 @@ public class TabbedActivity extends AppCompatActivity {
 
 
                 if (msj_toast_alta.isEmpty()){
-                    new DataMainActivityModificarCliente(TabbedActivity.this).execute(nombre_modif.getText().toString(), direccion_modif.getText().toString(), email_modif.getText().toString(), cuit_modif.getText().toString(), cel_modif.getText().toString(), tel_par_modif.getText().toString(), tel_lab_modif.getText().toString(),codigo_cliente_modif.getText().toString(), latitud_cliente_modif.getText().toString(), longitud_cliente_modif.getText().toString());
+                    new DataMainActivityModificarCliente(TabbedActivity.this).execute(nombre_modif.getText().toString(), direccion_modif.getText().toString(), email_modif.getText().toString(), cuit_modif.getText().toString(), cel_modif.getText().toString(), tel_par_modif.getText().toString(), tel_lab_modif.getText().toString(),codigo_cliente_modif.getText().toString(), latitud_cliente_modif.getText().toString(), longitud_cliente_modif.getText().toString(),s.toString());
                     // Toast.makeText((getApplicationContext()), "se agregaria", Toast.LENGTH_SHORT).show();
                 }else{
                     Toast.makeText((getApplicationContext()), msj_toast_alta, Toast.LENGTH_SHORT).show();
