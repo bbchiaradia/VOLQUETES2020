@@ -11,8 +11,8 @@
         android:id="@+id/btn_agregar_cliente_alta"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="170dp"
-        android:layout_marginTop="480dp"
+        android:layout_marginLeft="70dp"
+        android:layout_marginTop="620dp"
         android:onClick="Alta"
         android:text="@string/AGREGAR" />
 
@@ -140,6 +140,24 @@
         android:hint="@string/longitud"
         android:inputType="textPersonName"
         android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="180dp"
+        android:layout_height="36dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="530dp"
+        android:text="@string/zona"
+        android:textColor="@android:color/darker_gray" />
+
+
+    <Spinner
+        android:id="@+id/zona_alta"
+        android:layout_width="180dp"
+        android:layout_height="30dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="570dp"
+        android:textColor="@android:color/background_dark" />
 
 
 </FrameLayout>

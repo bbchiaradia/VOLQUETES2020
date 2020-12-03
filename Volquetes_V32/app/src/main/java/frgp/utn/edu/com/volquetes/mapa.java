@@ -82,26 +82,6 @@ public class mapa extends FragmentActivity implements OnMapReadyCallback  {
 
         new DataMainActivitBuscarUbicacionReservas(mapa.this).execute();
 
-        /*
-////////////////  PONIENDOLE EXPLICITAMENTE LOS DATOS SI /////////////////////////
-        ArrayList<String> lista = new ArrayList<>();
-        lista.add("-34.4703236");
-        lista.add("-34.4720495");
-        lista.add("-34.4586286");
-        lista.add("-34.4762176");
-        lista.add("-34.4500756");
-
-        ArrayList<String> lista2 = new ArrayList<>();
-        lista2.add("-58.6838082");
-        lista2.add("-58.6904324");
-        lista2.add("-58.7001067");
-        lista2.add("-58.7232627");
-        lista2.add("-58.7303537");
-
-        tamanio = 5;
-///////////////////////////////////////////////////////////////////////////////////
-*/
-
 
 
         System.out.println("aca lista1 ANTESSSS" +getIntent().getStringArrayListExtra("miLista"));
@@ -136,12 +116,12 @@ public class mapa extends FragmentActivity implements OnMapReadyCallback  {
 
 
         /////////////  DIUJO ZONAS - POLIGIONOS /////////////////
-       /*
+
         Polygon polygon1 = mMap.addPolygon(new PolygonOptions()
-                .add(new LatLng(-34.470327, -58.683718),
-                        new LatLng(-34.478402, -58.673591),
-                        new LatLng( -34.488080, -58.694278),
-                        new LatLng(-34.475546, -58.704168))
+                .add(new LatLng(-34.4466867, -58.7446665),
+                        new LatLng(-34.4755556, -58.7870237),
+                        new LatLng( -34.5313786, -58.7034557),
+                        new LatLng(-34.5005326, -58.6488037))
                 .strokeColor(Color.RED));
         polygon1.setTag("ZONA 1");
         polygon1.setStrokeWidth(4f);
@@ -149,20 +129,20 @@ public class mapa extends FragmentActivity implements OnMapReadyCallback  {
 
 
         Polygon polygon2 = mMap.addPolygon(new PolygonOptions()
-                .add(new LatLng(-34.470327, -58.683718),
-                        new LatLng(-34.447765, -58.700565),
-                        new LatLng( -34.468960, -58.756097),
-                        new LatLng( -34.474217, -58.736015))
+                .add(new LatLng(-34.4466867, -58.7446665),
+                        new LatLng(-34.4810476,-58.6806737),
+                        new LatLng( -34.4541926,-58.6249857),
+                        new LatLng( -34.3982066,-58.6507117))
                 .strokeColor(BLUE));
         polygon2.setTag("ZONA 2");
         polygon2.setStrokeWidth(4f);
 
 
         Polygon polygon3 = mMap.addPolygon(new PolygonOptions()
-                .add(new LatLng(-34.470327, -58.683718),
-                        new LatLng(-34.468210, -58.623871),
-                        new LatLng(  -34.446975,  -58.674276),
-                        new LatLng( -34.466990, -58.683652))
+                .add(new LatLng(-34.4810476,-58.6806737),
+                        new LatLng(-34.5005326, -58.6488037),
+                        new LatLng(  -34.4786136,-58.6067997),
+                        new LatLng( -34.4547056,-58.6234267))
                 .strokeColor(Color.GREEN));
         polygon3.setTag("ZONA 3");
         polygon3.setStrokeWidth(4f);
@@ -171,8 +151,9 @@ public class mapa extends FragmentActivity implements OnMapReadyCallback  {
         ///////////// FIN  DIUJO ZONAS - POLIGIONOS /////////////////
 
 
-        */
 
+
+        /*
    //DIBUJO ZONAS DE CIRCULOS
         Circle circle = mMap.addCircle(new CircleOptions()
                 .center(new LatLng(-34.455587, -58.685503))
@@ -225,9 +206,9 @@ public class mapa extends FragmentActivity implements OnMapReadyCallback  {
             System.out.println("DENTROOO ZONA 1" );
         }
 
+*/
 
 
-        
 
     }
 }

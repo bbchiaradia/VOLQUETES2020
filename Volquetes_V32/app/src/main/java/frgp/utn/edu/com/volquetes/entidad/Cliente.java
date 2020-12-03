@@ -13,10 +13,11 @@ public class Cliente {
     private String codigoCliente;
     private String latitud;
     private String longitud;
+    private int idZona;
 
     public Cliente(){
     }
-    public Cliente(String nombre , String direccion, String email , String cuit , String celular , String tel_part,String tel_lab, String codigoCli, String lat, String lon){
+    public Cliente(String nombre , String direccion, String email , String cuit , String celular , String tel_part,String tel_lab, String codigoCli, String lat, String lon, int idZona){
         this.nombreCliente=nombre;
         this.direccionCliente=direccion;
         this.emailCliente=email;
@@ -27,6 +28,7 @@ public class Cliente {
         this.codigoCliente=codigoCli;
         this.latitud=lat;
         this.longitud=lon;
+        this.idZona=idZona;
     }
 
 
@@ -103,7 +105,13 @@ public class Cliente {
         this.latitud = latitud;
     }
 
+    public int getIdZona() {
+        return idZona;
+    }
 
+    public void setIdZona(int idZona) {
+        this.idZona = idZona;
+    }
 
     @Override
     public String toString(){

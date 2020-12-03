@@ -2,6 +2,7 @@ package frgp.utn.edu.com.volquetes.conexion;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.widget.Toast;
 
@@ -10,6 +11,7 @@ import java.sql.DriverManager;
 import java.sql.Statement;
 
 import frgp.utn.edu.com.volquetes.R;
+import frgp.utn.edu.com.volquetes.principal;
 
 public class DataMainActivityFinalizarReserva extends AsyncTask<String, Void, String> {
     private Context context;
@@ -65,9 +67,12 @@ public class DataMainActivityFinalizarReserva extends AsyncTask<String, Void, St
         }
         if(response == "Carga exitosa") {
             Toast.makeText(context, "La reserva se ha finalizado correctamente", Toast.LENGTH_SHORT).show();
-          //  Intent intent_name = new Intent();
-           // intent_name.setClass(context, principal.class);
-            //context.startActivity(intent_name);
+
+
+
+            Intent intent_name = new Intent();
+            intent_name.setClass(context, principal.class);
+            context.startActivity(intent_name);
         }else if(band ==0){
             Toast.makeText(context, "La reserva no se ha podido finalizar correctamente", Toast.LENGTH_SHORT).show();
         }

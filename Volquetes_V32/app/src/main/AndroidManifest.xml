@@ -18,6 +18,10 @@
             android:label="@string/title_activity_reporte3"
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
+            android:name=".swipview.Cliente.Reportes.reporte4"
+            android:label="@string/btn_reporte4"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
             android:name=".swipview.Cliente.Reportes.reporte2"
             android:label="@string/title_activity_reporte2"
             android:theme="@style/AppTheme.NoActionBar" />

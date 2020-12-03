@@ -39,6 +39,16 @@ public class reportes_principal extends AppCompatActivity {
         });
 
 
+        Button btn_irReporte4 = (Button) findViewById(R.id.btn_reporte4);
+
+        btn_irReporte4.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                Intent abrir = new Intent(reportes_principal.this, reporte4.class);
+                startActivity(abrir);
+            }
+        });
+
+
 
     }
 

@@ -13,61 +13,61 @@
         android:id="@+id/img_agenda"
         android:layout_width="wrap_content"
         android:layout_height="140dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginLeft="24dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginStart="240dp"
+        android:layout_marginLeft="240dp"
+        android:layout_marginTop="4dp"
         android:background="@android:color/background_light"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/cliente" />
 
     <ImageButton
-        android:id="@+id/img_volquete"
-        style="@android:style/Widget.DeviceDefault.Light.ImageButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="144dp"
-        android:background="@android:color/background_light"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/img_agenda"
-        app:srcCompat="@drawable/stock" />
-
-    <ImageButton
-        android:id="@+id/img_reserva"
-        android:layout_width="wrap_content"
-        android:layout_height="150dp"
-        android:layout_marginStart="100dp"
-        android:layout_marginLeft="100dp"
-        android:layout_marginTop="48dp"
-        android:background="@android:color/background_light"
-        app:layout_constraintStart_toEndOf="@+id/img_agenda"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/reserva" />
-
-    <ImageButton
         android:id="@+id/img_mapa"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="68dp"
-        android:layout_marginLeft="68dp"
-        android:layout_marginTop="120dp"
+        android:layout_marginStart="224dp"
+        android:layout_marginLeft="224dp"
+        android:layout_marginTop="68dp"
         android:background="@android:color/background_light"
-        app:layout_constraintStart_toEndOf="@+id/img_volquete"
-        app:layout_constraintTop_toBottomOf="@+id/img_reserva"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/img_volquete"
         app:srcCompat="@drawable/mapa" />
 
     <ImageButton
         android:id="@+id/img_reportes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="188dp"
+        android:layout_marginStart="228dp"
+        android:layout_marginLeft="228dp"
+        android:layout_marginTop="68dp"
         android:background="@android:color/background_light"
-        app:layout_constraintStart_toEndOf="@+id/img_agenda"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/img_mapa"
         app:srcCompat="@drawable/reportes" />
+
+    <ImageButton
+        android:id="@+id/img_volquete"
+        style="@android:style/Widget.DeviceDefault.Light.ImageButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="216dp"
+        android:layout_marginLeft="216dp"
+        android:layout_marginTop="72dp"
+        android:background="@android:color/background_light"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/img_reserva"
+        app:srcCompat="@drawable/stock" />
+
+    <ImageButton
+        android:id="@+id/img_reserva"
+        android:layout_width="wrap_content"
+        android:layout_height="150dp"
+        android:layout_marginStart="220dp"
+        android:layout_marginLeft="220dp"
+        android:layout_marginTop="72dp"
+        android:background="@android:color/background_light"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/img_agenda"
+        app:srcCompat="@drawable/reserva" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

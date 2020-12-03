@@ -5,13 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".swipview.Cliente.Reportes.reporte2"
-    tools:showIn="@layout/activity_reporte2">
+    tools:context=".swipview.Cliente.Reportes.reporte4"
+    tools:showIn="@layout/activity_reporte4">
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".swipview.Cliente.Reportes.reporte2.ListarReporte2Fragment">
+        tools:context=".swipview.Cliente.Reportes.reporte4.ListarReporte4Fragment">
 
         <ImageView
             android:id="@+id/imageView10"
@@ -21,7 +21,7 @@
             android:src="@drawable/cinta_small" />
 
         <EditText
-            android:id="@+id/codigo_cliente_listar_reporte2"
+            android:id="@+id/codigo_cliente_listar_reporte4"
             android:layout_width="180dp"
             android:layout_height="45dp"
             android:layout_marginLeft="10dp"
@@ -40,27 +40,26 @@
             android:src="@drawable/cinta_small" />
 
         <Button
-            android:id="@+id/btn_buscar_cliente_listar_reporte2"
+            android:id="@+id/btn_buscar_cliente_listar_reporte4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="185dp"
             android:layout_marginTop="11dp"
-            android:onClick="BuscarClienteReporte2"
+            android:onClick="BuscarClienteReporte4"
             android:text="@string/BUSCAR" />
 
 
         <TextView
             android:id="@+id/textView4"
-            android:layout_width="222dp"
-            android:layout_height="wrap_content"
+            android:layout_width="165dp"
+            android:layout_height="48dp"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="85dp"
-            android:text="@string/cantidad_reservas" />
-
+            android:text="@string/btn_reporte4" />
 
         <EditText
-            android:id="@+id/TXT_CANTIDAD_RESERVAS_CLIENTES"
-            android:layout_width="55dp"
+            android:id="@+id/TXT_MONTO_RESERVAS_CLIENTES"
+            android:layout_width="75dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="230dp"
             android:layout_marginTop="85dp"
@@ -70,7 +69,7 @@
             tools:visibility="visible" />
 
         <ListView
-            android:id="@+id/ListaClientesReservasReporte2"
+            android:id="@+id/ListaClientesReservasReporte4"
             android:layout_width="match_parent"
             android:layout_height="393dp"
             android:layout_marginTop="150dp"
@@ -79,6 +78,8 @@
             android:divider="@android:color/holo_red_dark"
             android:dividerHeight="4dp"
             android:paddingTop="75dp"/>
+
+
 
     </FrameLayout>
 

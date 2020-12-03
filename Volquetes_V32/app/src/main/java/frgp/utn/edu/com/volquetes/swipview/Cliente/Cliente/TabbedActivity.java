@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -25,11 +26,18 @@ import frgp.utn.edu.com.volquetes.R;
 import frgp.utn.edu.com.volquetes.conexion.DataMainActivityAltaCliente;
 import frgp.utn.edu.com.volquetes.conexion.DataMainActivityBorrarCliente;
 import frgp.utn.edu.com.volquetes.conexion.DataMainActivityBuscarCliente;
+import frgp.utn.edu.com.volquetes.conexion.DataMainActivityFormaPagoReserva;
 import frgp.utn.edu.com.volquetes.conexion.DataMainActivityListarCliente;
 import frgp.utn.edu.com.volquetes.conexion.DataMainActivityModificarCliente;
+import frgp.utn.edu.com.volquetes.conexion.DataMainActivityZonaCliente;
+import frgp.utn.edu.com.volquetes.entidad.FormaPago;
+import frgp.utn.edu.com.volquetes.entidad.Zona;
+import frgp.utn.edu.com.volquetes.swipview.Cliente.Reserva.TabbedActivityReserva;
 
 
 public class TabbedActivity extends AppCompatActivity {
+    Spinner zona_alta;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +48,7 @@ public class TabbedActivity extends AppCompatActivity {
         viewPager.setAdapter(sectionsPagerAdapter);
         TabLayout tabs = findViewById(R.id.tabs);
         tabs.setupWithViewPager(viewPager);
+
 
     }
 
@@ -70,6 +79,14 @@ public class TabbedActivity extends AppCompatActivity {
         final EditText codigo_cliente_alta = (EditText) findViewById(R.id.codigo_cliente_alta);
         final EditText latitud_cliente_alta = (EditText) findViewById(R.id.latitud_cliente);
         final EditText longitud_cliente_alta = (EditText) findViewById(R.id.longitud_cliente);
+
+
+        zona_alta = (Spinner) findViewById(R.id.zona_alta);
+        DataMainActivityZonaCliente task = new DataMainActivityZonaCliente(TabbedActivity.this, zona_alta);
+        task.execute();
+
+
+
         Button btn_alta = (Button) findViewById(R.id.btn_agregar_cliente_alta);
 
         btn_alta.setOnClickListener(new View.OnClickListener() {
@@ -132,8 +149,13 @@ public class TabbedActivity extends AppCompatActivity {
                 }
 
 
+                Zona form = (Zona) zona_alta.getSelectedItem();
+                String s = String.valueOf(form.getIdZona());
+
+
+
                 if (msj_toast_alta.isEmpty()){
-                     new DataMainActivityAltaCliente(TabbedActivity.this).execute(nombre_alta.getText().toString(), direccion_alta.getText().toString(), email_alta.getText().toString(), cuit_alta.getText().toString(), cel_alta.getText().toString(), tel_par_alta.getText().toString(), tel_lab_alta.getText().toString(),codigo_cliente_alta.getText().toString(), latitud_cliente_alta.getText().toString(), longitud_cliente_alta.getText().toString());
+                     new DataMainActivityAltaCliente(TabbedActivity.this).execute(nombre_alta.getText().toString(), direccion_alta.getText().toString(), email_alta.getText().toString(), cuit_alta.getText().toString(), cel_alta.getText().toString(), tel_par_alta.getText().toString(), tel_lab_alta.getText().toString(),codigo_cliente_alta.getText().toString(), latitud_cliente_alta.getText().toString(), longitud_cliente_alta.getText().toString(),s.toString());
                     // Toast.makeText((getApplicationContext()), "se agregaria", Toast.LENGTH_SHORT).show();
                 }else{
                     Toast.makeText((getApplicationContext()), msj_toast_alta, Toast.LENGTH_SHORT).show();

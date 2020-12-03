@@ -44,8 +44,8 @@
 
     <ListView
         android:id="@+id/ListaFinalizarReservas"
-        android:layout_width="351dp"
-        android:layout_height="376dp"
+        android:layout_width="match_parent"
+        android:layout_height="679dp"
         android:cacheColorHint="@android:color/holo_red_dark"
         android:clickable="true"
         android:divider="@android:color/holo_red_dark"

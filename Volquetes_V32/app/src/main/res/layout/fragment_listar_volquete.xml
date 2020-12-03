@@ -45,7 +45,11 @@
         android:id="@+id/ListaVolquetes"
         android:layout_width="398dp"
         android:layout_height="match_parent"
-        android:paddingTop="80dp" />
+        android:cacheColorHint="@android:color/holo_red_dark"
+        android:clickable="true"
+        android:divider="@android:color/holo_red_dark"
+        android:dividerHeight="4dp"
+        android:paddingTop="75dp"/>
 
 
 </FrameLayout>
