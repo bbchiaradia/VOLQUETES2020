@@ -108,7 +108,7 @@ public class DataMainActivityReporte3ClienteReservasFecha extends AsyncTask<Stri
 
 
         }else if(band ==0){
-            Toast.makeText(context, "No existen Entregas de Reservas entre ese rango de fechas", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "No existen Entregas de Reservas en ese rango de fechas", Toast.LENGTH_SHORT).show();
         }
 
 
