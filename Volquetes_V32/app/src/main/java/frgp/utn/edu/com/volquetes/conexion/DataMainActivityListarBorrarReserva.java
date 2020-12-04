@@ -132,7 +132,7 @@ public class DataMainActivityListarBorrarReserva extends AsyncTask<String, Void,
                     System.out.println(id_volquete);
 
                     AlertDialog.Builder alerta = new AlertDialog.Builder(context);
-                    alerta.setMessage("¿Desea registrar el retiro del volquete: " +ArrayCodVolquete.get(i)+ "?")
+                    alerta.setMessage("¿Desea borrar la reserva del volquete: " +ArrayCodVolquete.get(i)+ "?")
                             .setCancelable(false)
                             .setPositiveButton("SI", new DialogInterface.OnClickListener() {
                                 @Override
