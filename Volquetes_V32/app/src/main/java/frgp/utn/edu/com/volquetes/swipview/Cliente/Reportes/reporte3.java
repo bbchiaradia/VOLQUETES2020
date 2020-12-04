@@ -65,7 +65,6 @@ public class reporte3 extends AppCompatActivity implements View.OnClickListener 
                 }
                 if (msj_toast_alta.isEmpty()){
                     new DataMainActivityReporte3ClienteReservasFecha(reporte3.this, ListaReserva).execute(fecha_desde.getText().toString(),fecha_hasta.getText().toString());
-                    Toast.makeText((getApplicationContext()), "Entroooo", Toast.LENGTH_SHORT).show();
                 }else{
                     Toast.makeText((getApplicationContext()), msj_toast_alta, Toast.LENGTH_SHORT).show();
                 }

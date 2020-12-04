@@ -64,7 +64,7 @@ public class DataMainActivitBuscarUbicacionReservas extends AsyncTask<String, Vo
             ///Valido si existe el Cliente que voy a registrar:
             Statement st1 = con.createStatement();
 
-                ResultSet rs1 = st1.executeQuery("SELECT distinct COUNT(*) as total, c.latitud, c.longitud , c.nombreCliente , c.codCliente, c.nombreCliente, c.codCliente\n" +
+                ResultSet rs1 = st1.executeQuery("SELECT distinct COUNT(*) as total, c.latitud, c.longitud , c.nombreCliente , c.codCliente, c.idZona, c.nombreCliente, c.codCliente\n" +
                         "FROM `reservas` r  inner join clientes c on c.idCliente = r.idCliente\n" +
                         "WHERE r.fechaRetiro is null\n" +
                         "and not (c.latitud is null or c.longitud is null) \n" +
@@ -76,7 +76,7 @@ public class DataMainActivitBuscarUbicacionReservas extends AsyncTask<String, Vo
                 band=1;
                     Arrayx.add( rs1.getString("latitud"));
                     Arrayy.add( rs1.getString("longitud"));
-                    ArrayCliente.add( rs1.getString("codCliente") +" - "+  rs1.getString("nombreCliente")+" - Reservas: " +  rs1.getString("total"));
+                    ArrayCliente.add( rs1.getString("codCliente") +" - "+  rs1.getString("nombreCliente")+" - ZONA: " +  rs1.getString("idZona")+" - Reservas: " +  rs1.getString("total"));
                 }
 
             ///Valido si no existen registros para realizar el Insert
