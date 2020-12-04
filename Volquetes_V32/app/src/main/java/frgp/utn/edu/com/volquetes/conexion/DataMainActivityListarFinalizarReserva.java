@@ -7,6 +7,7 @@ import android.content.DialogInterface;
 import android.os.AsyncTask;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -20,7 +21,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import frgp.utn.edu.com.volquetes.R;
-import frgp.utn.edu.com.volquetes.entidad.Reserva;
+import frgp.utn.edu.com.volquetes.entidad.*;
 
 public class DataMainActivityListarFinalizarReserva extends AsyncTask<String, Void, String> {
     private Context context;
@@ -72,7 +73,7 @@ public class DataMainActivityListarFinalizarReserva extends AsyncTask<String, Vo
 
                 }
             }else{
-               // ResultSet rs1 = st1.executeQuery("SELECT * FROM `reservas` where idCliente like '%"+codigo_cliente+"%' and fechaRetiro is null");
+                // ResultSet rs1 = st1.executeQuery("SELECT * FROM `reservas` where idCliente like '%"+codigo_cliente+"%' and fechaRetiro is null");
                 ResultSet rs1 = st1.executeQuery("SELECT r.idReserva, r.fechaEntrega, c.nombreCliente, c.codCliente, v.codigoVolquete, v.idvolquete FROM `reservas` r,`clientes` c , `volquetes` v where fechaRetiro is null and r.idcliente = c.idcliente and r.idvolquete =v.idvolquete and c.codCliente like '%"+codigo_cliente+"%'");
 
                 while(rs1.next()) {
@@ -107,6 +108,7 @@ public class DataMainActivityListarFinalizarReserva extends AsyncTask<String, Vo
 
     //@Override
     protected void onPostExecute(String response) {
+        final int s = 0;
         if (dialog.isShowing()) {
             dialog.dismiss();
         }
@@ -117,16 +119,16 @@ public class DataMainActivityListarFinalizarReserva extends AsyncTask<String, Vo
         if(band == 1 && response == "Carga exitosa") {
             adaptador = new ArrayAdapter<String>(context, android.R.layout.simple_list_item_1, Coleccionn);
             list_reserva.setAdapter(adaptador);
-            list_reserva.clearChoices();
+            //list_reserva.clearChoices();
 
             list_reserva.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
-                public void onItemClick(AdapterView adapterView, View view, int i, long l) {
+                public void onItemClick(AdapterView adapterView, View view, int i, final long l) {
 
                     System.out.println(ArrayIDReserva.get(i));
                     final String id_reserva = ArrayIDReserva.get(i);
                     final String id_volquete = ArrayIDVolquete.get(i);
-
+                    final int es = i;
                     System.out.println(id_reserva);
                     System.out.println(id_volquete);
 
@@ -136,8 +138,13 @@ public class DataMainActivityListarFinalizarReserva extends AsyncTask<String, Vo
                             .setPositiveButton("SI", new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
+
                                     new DataMainActivityFinalizarReserva(context).execute(id_reserva.toString(), id_volquete.toString());
-                                    //list_reserva.refreshDrawableState();
+                                    Coleccionn.remove(es);
+                                    list_reserva.setAdapter(null);
+                                    adaptador = new ArrayAdapter<String>(context, android.R.layout.simple_list_item_1, Coleccionn);
+                                    list_reserva.setAdapter(adaptador);
+                                    list_reserva.deferNotifyDataSetChanged();
 
                                 }
                             })
@@ -146,8 +153,13 @@ public class DataMainActivityListarFinalizarReserva extends AsyncTask<String, Vo
                                 public void onClick(DialogInterface dialog, int which) {
                                     dialog.cancel();
 
+
+
                                 }
                             });
+                    if (vista.getParent()!= null){
+                        ((ViewGroup)vista.getParent()).removeView(vista);
+                    }
                     AlertDialog titulo = alerta.create();
                     titulo.setTitle("Finalizar Reserva" );
                     titulo.setView(vista);
@@ -155,7 +167,8 @@ public class DataMainActivityListarFinalizarReserva extends AsyncTask<String, Vo
                 }
             });
 
-        }else if(band ==0){
+        }
+        else if(band ==0){
             Toast.makeText(context, "El codigo de cliente ingresado no existe", Toast.LENGTH_SHORT).show();
         }
 

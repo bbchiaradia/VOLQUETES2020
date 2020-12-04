@@ -7,6 +7,7 @@ import android.content.DialogInterface;
 import android.os.AsyncTask;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -20,7 +21,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import frgp.utn.edu.com.volquetes.R;
-import frgp.utn.edu.com.volquetes.entidad.Reserva;
+import frgp.utn.edu.com.volquetes.entidad.*;
 
 public class DataMainActivityListarBorrarReserva extends AsyncTask<String, Void, String> {
     private Context context;
@@ -71,7 +72,7 @@ public class DataMainActivityListarBorrarReserva extends AsyncTask<String, Void,
 
                 }
             }else{
-               // ResultSet rs1 = st1.executeQuery("SELECT * FROM `reservas` where idCliente like '%"+codigo_cliente+"%' and fechaRetiro is null");
+                // ResultSet rs1 = st1.executeQuery("SELECT * FROM `reservas` where idCliente like '%"+codigo_cliente+"%' and fechaRetiro is null");
                 ResultSet rs1 = st1.executeQuery("SELECT r.idReserva, r.fechaEntrega, c.nombreCliente, c.codCliente, v.codigoVolquete, v.idvolquete FROM `reservas` r,`clientes` c , `volquetes` v where fechaRetiro is null and r.idcliente = c.idcliente and r.idvolquete =v.idvolquete and c.codCliente like '%"+codigo_cliente+"%'");
 
                 while(rs1.next()) {
@@ -126,7 +127,7 @@ public class DataMainActivityListarBorrarReserva extends AsyncTask<String, Void,
                     System.out.println(ArrayIDReserva.get(i));
                     final String id_reserva = ArrayIDReserva.get(i);
                     final String id_volquete = ArrayIDVolquete.get(i);
-
+                    final int es = i;
                     System.out.println(id_reserva);
                     System.out.println(id_volquete);
 
@@ -137,7 +138,11 @@ public class DataMainActivityListarBorrarReserva extends AsyncTask<String, Void,
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
                                     new DataMainActivityBorrarReserva(context).execute(id_reserva.toString(), id_volquete.toString());
-                                    //list_reserva.refreshDrawableState();
+                                    Coleccionn.remove(es);
+                                    list_reserva.setAdapter(null);
+                                    adaptador = new ArrayAdapter<String>(context, android.R.layout.simple_list_item_1, Coleccionn);
+                                    list_reserva.setAdapter(adaptador);
+                                    list_reserva.deferNotifyDataSetChanged();
 
                                 }
                             })
@@ -148,6 +153,10 @@ public class DataMainActivityListarBorrarReserva extends AsyncTask<String, Void,
 
                                 }
                             });
+
+                    if (vista.getParent()!= null){
+                        ((ViewGroup)vista.getParent()).removeView(vista);
+                    }
                     AlertDialog titulo = alerta.create();
                     titulo.setTitle("Finalizar Reserva" );
                     titulo.setView(vista);
